@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: #09090b;
   line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
   top: 0;
   z-index: -2;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   --tw-bg-opacity: 1;
   background-color: rgb(9 9 11 / var(--tw-bg-opacity));
   background-image: radial-gradient(
@@ -26,4 +26,30 @@ body {
     rgba(120, 119, 198, 0.3),
     hsla(0, 0%, 100%, 0)
   );
+}
+
+.border-gradient {
+  border-image: linear-gradient(to right, #2d2d2d, #7b7b7b, #2d2d2d);
+  border-image-slice: 1;
+}
+
+.animate_in {
+  animation: animateIn 0.3s ease 0.15s both;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-gradient {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, #e5e5e5, #737373);
 }
