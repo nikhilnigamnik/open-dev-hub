@@ -33,8 +33,8 @@ module.exports = {
       },
       colors: {
         primary: "#09090b",
-        secondary: "#f3f4f6",
-        border: "#7B7B7B",
+        secondary: "rgba(191, 219, 254, 0.1)",
+        border: "rgba(219, 234, 254, 0.2)",
       },
     },
   },
