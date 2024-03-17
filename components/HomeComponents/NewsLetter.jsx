@@ -20,16 +20,11 @@ const NewsLetter = () => {
   };
   return (
     <section className="py-20">
-      <Container>
-        <div className="text-center flex flex-col gap-3">
-          <h1 className={"text-3xl font-semibold text-gradient"}>
-            Subscribe to our Newsletter
-          </h1>
-          <p className={"text-gray-500"}>
-            Subscribe to our newsletter to get updates about our latest products
-          </p>
-        </div>
-        <div className="flex justify-between items-center gap-4 mt-3">
+      <Container className={"flex flex-col justify-center items-center"}>
+        <h1 className={"text-3xl font-semibold text-gradient"}>
+          Subscribe to our Newsletter
+        </h1>
+        <div className="flex items-center gap-4 mt-3">
           <Input
             value={email}
             name={"email"}

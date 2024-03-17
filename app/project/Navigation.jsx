@@ -1,15 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const Navigation = () => {
+  const pathname = usePathname();
   return (
-    <aside className="fixed top-0 left-0 z-40 w-64 h-screen mt-20 transition-transform -translate-x-full   md:translate-x-0">
+    <aside className="fixed top-0 left-0 z-40 w-64 h-screen mt-20 transition-transform -translate-x-full   md:translate-x-0 ">
       <div className="h-full px-3 pb-4 overflow-y-auto ">
         <ul className="space-y-2 font-medium">
           <li>
             <Link
               href="/project"
-              className="rounded-full  flex items-center   px-4 py-2 text-gradient outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 "
+              className={`rounded-full  flex items-center   px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
+                pathname === "/project" ? "text-yellow-300" : "text-gradient"
+              }`}
             >
               <svg
                 className="w-5 h-5 text-gray-500  transition duration-75  group-hover:text-gray-900 "
@@ -28,7 +34,11 @@ const Navigation = () => {
           <li>
             <Link
               href="/project/community"
-              className="rounded-full  flex items-center   px-4 py-2 text-gradient outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 "
+              className={`rounded-full  flex items-center   px-4 py-2  outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
+                pathname === "/project/community"
+                  ? "text-yellow-300"
+                  : "text-gradient"
+              }`}
             >
               <svg
                 className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-primary"
@@ -48,7 +58,11 @@ const Navigation = () => {
           <li>
             <Link
               href="/project/devs"
-              className="rounded-full  flex items-center   px-4 py-2 text-gradient outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 "
+              className={`rounded-full  flex items-center   px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
+                pathname === "/project/devs"
+                  ? "text-yellow-300"
+                  : "text-gradient"
+              }`}
             >
               <svg
                 className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-primary"
@@ -66,7 +80,11 @@ const Navigation = () => {
           <li>
             <Link
               href="/project/profile"
-              className="rounded-full  flex items-center   px-4 py-2 text-gradient outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 "
+              className={`rounded-full  flex items-center   px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
+                pathname === "/project/profile"
+                  ? "text-yellow-300"
+                  : "text-gradient"
+              }`}
             >
               <svg
                 className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-primary"

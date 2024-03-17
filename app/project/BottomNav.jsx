@@ -1,16 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const BottomNav = () => {
+  const pathname = usePathname();
   return (
-    <div className="fixed block md:hidden z-50  left-2 right-2   rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15">
+    <div className="fixed block md:hidden z-50  left-2 right-2   rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15">
       <div className="grid grid-cols-5 justify-between ">
         <Link
           href={"/"}
           className="inline-flex flex-col items-center justify-center px-5 py-3 rounded-s-full  hover:border-yellow-200/40 group"
         >
           <svg
-            className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400  "
+            className={`w-5 h-5 mb-1 ${
+              pathname === "/" ? "text-yellow-300" : "text-gray-500"
+            }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -26,7 +32,9 @@ const BottomNav = () => {
           className="inline-flex flex-col items-center justify-center px-5 group"
         >
           <svg
-            className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400  "
+            className={`w-5 h-5 mb-1 ${
+              pathname === "/project/devs" ? "text-yellow-300" : "text-gray-500"
+            }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -42,10 +50,10 @@ const BottomNav = () => {
           <button
             data-tooltip-target="tooltip-new"
             type="button"
-            className="inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
+            className="inline-flex items-center justify-center w-10 h-10 font-medium bg-yellow-300 rounded-full hover:bg-yellow-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
           >
             <svg
-              className="w-4 h-4 text-white"
+              className="w-4 h-4 text-black"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -68,7 +76,11 @@ const BottomNav = () => {
           className="inline-flex flex-col items-center justify-center px-5 group"
         >
           <svg
-            className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400  "
+            className={`w-5 h-5 mb-1 ${
+              pathname === "/project/community"
+                ? "text-yellow-300"
+                : "text-gray-500"
+            }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -90,7 +102,11 @@ const BottomNav = () => {
           className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group"
         >
           <svg
-            className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400  "
+            className={`w-5 h-5 mb-1 ${
+              pathname === "/project/profile"
+                ? "text-yellow-300"
+                : "text-gray-500"
+            }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"

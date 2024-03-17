@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
