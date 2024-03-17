@@ -1,17 +1,24 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
+  const session = useSession();
   return (
     <Container className={"py-20"}>
       <section className="flex flex-col gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gradient">Login</h1>
         </div>
+        <p className="text-3xl font-bold text-gradient">
+          {session?.data?.user?.name}
+        </p>
         <Input placeholder={"Email"} />
         <Input placeholder={"Password"} />
         <Button>Login</Button>
@@ -23,6 +30,7 @@ const page = () => {
         </p>
         <p className="text-gradient">Or sign in with</p>
         <button
+          onClick={() => signIn("google")}
           type="button"
           className="relative inline-flex w-full items-center justify-center rounded-full border-border  border text-blue-200 bg-secondary px-3.5 py-2.5 font-semibold  "
         >
