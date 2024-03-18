@@ -1,32 +1,31 @@
-import ProjectCard from "@/components/ProjectComponents/ProjectCard";
+import { CardSpotlight } from "@/components/ui/CardSpotlight";
+import axios from "axios";
 import React from "react";
 
-const Page = () => {
+const Page = async () => {
   return (
     <div className="md:ml-64 text-white">
-      <div className="p-4  rounded-lg  h-[400vh] flex flex-col gap-4">
+      <div className="p-4  rounded-lg   flex flex-col gap-4">
         <div className="p-2 rounded-xl border border-border bg-secondary">
           Filter Data
         </div>
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
+        <CardSpotlight hoverEffect>jsdnvjdsjvbjkds</CardSpotlight>
       </div>
     </div>
   );

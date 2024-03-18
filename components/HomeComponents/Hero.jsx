@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Container from "../ui/Container";
+import { CardSpotlight } from "../ui/CardSpotlight";
 
 const Hero = () => {
   return (
@@ -43,6 +45,17 @@ const Hero = () => {
           <Button>Join Us</Button>
         </div>
       </div>
+      <Container>
+        <CardSpotlight hoverEffect>
+          <img
+            src={
+              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png"
+            }
+            className={"w-full rounded-md"}
+            alt={"Banner"}
+          />
+        </CardSpotlight>
+      </Container>
     </>
   );
 };

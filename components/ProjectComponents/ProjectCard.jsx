@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const ProjectCard = () => {
+const ProjectCard = ({ children }) => {
   return (
-    <div className='p-2 rounded-xl border border-border bg-secondary'>ProjectCard</div>
-  )
-}
+    <div className="p-2 rounded-xl border border-border bg-secondary">
+      {children}
+    </div>
+  );
+};
 
-export default ProjectCard
+export default ProjectCard;

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main>
       <Hero />
-      <NewsLetter />
+      {/* <NewsLetter /> */}
       {/* <HomeAccordion /> */}
     </main>
   );
