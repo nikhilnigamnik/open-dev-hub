@@ -1,21 +1,29 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const BottomNav = () => {
+  const { user } = useSelector((state) => state.user);
   const pathname = usePathname();
+  const session = useSession();
+  if (session?.status === "unauthenticated") {
+    redirect("/login");
+  }
+
   return (
     <div className="fixed block md:hidden z-50  left-2 right-2   rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15">
       <div className="grid grid-cols-5 justify-between ">
         <Link
-          href={"/"}
+          href={"/project"}
           className="inline-flex flex-col items-center justify-center px-5 py-3 rounded-s-full  hover:border-yellow-200/40 group"
         >
           <svg
             className={`w-5 h-5 mb-1 ${
-              pathname === "/" ? "text-yellow-300" : "text-gray-500"
+              pathname === "/project" ? "text-yellow-300" : "text-gray-500"
             }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +54,10 @@ const BottomNav = () => {
           <span className="sr-only">Developers</span>
         </Link>
 
-        <div className="flex items-center justify-center">
+        <Link
+          href={`/project/profile/${user?._id}/newproject`}
+          className="flex items-center justify-center"
+        >
           <button
             data-tooltip-target="tooltip-new"
             type="button"
@@ -69,7 +80,7 @@ const BottomNav = () => {
             </svg>
             <span className="sr-only">New item</span>
           </button>
-        </div>
+        </Link>
 
         <Link
           href={"/project/community"}
@@ -98,7 +109,7 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={"/project/profile"}
+          href={`/project/profile/${user?._id}`}
           className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group"
         >
           <svg

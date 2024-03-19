@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Container from "../ui/Container";
-import { CardSpotlight } from "../ui/CardSpotlight";
+import { CardSpotlight } from "../CardSpotlight";
 
 const Hero = () => {
   return (

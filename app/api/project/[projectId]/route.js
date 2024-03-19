@@ -3,10 +3,11 @@ import { Project } from "@/models/Project";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
+  const { projectId } = params;
   try {
     await connectDB();
     const data = await Project.find({
-      user: params.projectId,
+      userId: projectId,
     });
     return NextResponse.json(data, {
       success: true,

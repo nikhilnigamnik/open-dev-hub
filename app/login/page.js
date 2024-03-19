@@ -1,34 +1,22 @@
 "use client";
-
 import Container from "@/components/ui/Container";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const Login = () => {
+const page = () => {
   const session = useSession();
+  
+  if (session.status === "authenticated") {
+    redirect("/project");
+  }
   return (
     <Container className={"py-20"}>
-      <section className="flex flex-col gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-gradient">Login</h1>
-        </div>
-        <p className="text-3xl font-bold text-gradient">
-          {session?.data?.user?.name}
-        </p>
-        <Input placeholder={"Email"} />
-        <Input placeholder={"Password"} />
-        <Button>Login</Button>
-        <Button onClick={() => signOut("google")}>Logout</Button>
-        <p className="text-gradient">
-          Don't have an account?
-          <Link href="/register" className="text-gradient ml-3">
-            Sign up
-          </Link>
-        </p>
-        <p className="text-gradient">Or sign in with</p>
+      <section className="flex flex-col gap-4 text-center">
+        <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+          OpenDevHub
+        </h1>
+        <p className="text-gradient">Or sign in with social account</p>
         <button
           onClick={() => signIn("google")}
           type="button"
@@ -47,7 +35,6 @@ const Login = () => {
           Sign in with Google
         </button>
         <button
-          onClick={() => signIn("github")}
           type="button"
           className="relative inline-flex w-full items-center justify-center rounded-full border-border  border text-blue-200 bg-secondary px-3.5 py-2.5 font-semibold  "
         >
@@ -68,4 +55,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default page;

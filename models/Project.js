@@ -13,6 +13,9 @@ const ProjectSchema = new Schema(
       type: String,
       required: true,
     },
+    liveLink: {
+      type: String,
+    },
     tags: [
       {
         type: String,
@@ -29,7 +32,6 @@ const ProjectSchema = new Schema(
     },
     user: {
       type: Object,
-      required: true,
     },
   },
 
