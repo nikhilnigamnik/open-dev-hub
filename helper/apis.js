@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getRepoData = async () => {
-  const res = await axios.get("https://api.github.com/repos/appwrite/appwrite");
+  const res = await axios.get("https://fakestoreapi.com/products");
   return res.data;
 };
 

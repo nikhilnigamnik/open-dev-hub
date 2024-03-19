@@ -30,7 +30,7 @@ export const CardSpotlight = ({
   return (
     <div
       className={cn(
-        "rounded-lg relative p-3 flex flex-col gap-4 shadow-lg  border border-border bg-secondary bg-cover overflow-hidden group",
+        "rounded-xl relative p-3 flex flex-col gap-4 shadow-lg  border border-border bg-secondary bg-cover overflow-hidden group",
         className
       )}
       {...props}
@@ -41,11 +41,11 @@ export const CardSpotlight = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="absolute inset-0 transition-all duration-200 rounded-lg opacity-0 pointer-events-none"
+        className="absolute inset-0 transition-all duration-200 rounded-lg opacity-0 pointer-events-none blur-3xl"
         style={{
           opacity,
           background: hoverEffect
-            ? `radial-gradient(200px circle at ${position.x}px ${position.y}px, #ffffff10, transparent)`
+            ? `radial-gradient(200px circle at ${position.x}px ${position.y}px, rgba(191, 219, 254, 0.1), transparent)`
             : "transparent",
         }}
       ></div>

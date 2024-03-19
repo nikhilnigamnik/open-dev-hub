@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+
 import Link from "next/link";
 
 const NavBar = () => {
@@ -9,7 +10,7 @@ const NavBar = () => {
         <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           <Link href={"/"}>OpenDevHub</Link>
         </h1>
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <ul className="flex   justify-between items-center gap-10 text-slate-100">
             <li>
               <Link href={"/project"}>Projects</Link>
@@ -21,10 +22,10 @@ const NavBar = () => {
               <Link href={"/community"}>Community</Link>
             </li>
           </ul>
-        </div>
-        <Button>
+        </div> */}
+        {/* <Button>
           <Link href={"/login"}>Login</Link>
-        </Button>
+        </Button> */}
       </div>
     </nav>
   );

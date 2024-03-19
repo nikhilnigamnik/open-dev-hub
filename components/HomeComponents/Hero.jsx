@@ -42,7 +42,7 @@ const Hero = () => {
           <Button>
             <Link href={"/project"}>Explore Projects</Link>
           </Button>
-          <Button>Join Us</Button>
+          {/* <Button>Join Us</Button> */}
         </div>
       </div>
       <Container>

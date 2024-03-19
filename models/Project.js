@@ -23,9 +23,12 @@ const ProjectSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    userId: {
+      type: String,
+      required: true,
+    },
     user: {
-      type: Schema.Types.ObjectId,
-      ref: "users",
+      type: Object,
       required: true,
     },
   },

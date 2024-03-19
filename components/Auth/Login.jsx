@@ -1,28 +1,36 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const Login = () => {
+  const session = useSession();
   return (
     <Container className={"py-20"}>
       <section className="flex flex-col gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gradient">Login</h1>
         </div>
-        <Input placeholder={"Full Name"} />
+        <p className="text-3xl font-bold text-gradient">
+          {session?.data?.user?.name}
+        </p>
         <Input placeholder={"Email"} />
         <Input placeholder={"Password"} />
-        <Button>Register</Button>
+        <Button>Login</Button>
+        <Button onClick={() => signOut("google")}>Logout</Button>
         <p className="text-gradient">
-          Already have an account?
-          <Link href="/login" className="text-gradient ml-3">
-            Sign in
+          Don't have an account?
+          <Link href="/register" className="text-gradient ml-3">
+            Sign up
           </Link>
         </p>
         <p className="text-gradient">Or sign in with</p>
         <button
+          onClick={() => signIn("google")}
           type="button"
           className="relative inline-flex w-full items-center justify-center rounded-full border-border  border text-blue-200 bg-secondary px-3.5 py-2.5 font-semibold  "
         >
@@ -39,6 +47,7 @@ const page = () => {
           Sign in with Google
         </button>
         <button
+          onClick={() => signIn("github")}
           type="button"
           className="relative inline-flex w-full items-center justify-center rounded-full border-border  border text-blue-200 bg-secondary px-3.5 py-2.5 font-semibold  "
         >
@@ -59,4 +68,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;
