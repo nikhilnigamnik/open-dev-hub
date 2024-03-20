@@ -4,18 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { toast } from "sonner";
+import { Badge } from "@/components/ui/badge";
 
 const page = ({ params }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     link: "",
-    tags: "",
+    tags: [""],
+    liveLink: "",
     user: params.userId,
     userId: params.userId,
   });
 
   const handleSubmitForm = async () => {
+    setLoading(true);
     try {
       if (
         !formData.title ||
@@ -35,10 +39,16 @@ const page = ({ params }) => {
       });
       console.log(res.data);
     } catch (error) {}
+    setLoading(false);
   };
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleTagsInputChange = (e) => {
+    const tagsArray = e.target.value.split(",").map((tag) => tag.trim());
+    setFormData({ ...formData, tags: tagsArray });
   };
 
   return (
@@ -64,12 +74,28 @@ const page = ({ params }) => {
           onChange={handleInputChange}
         />
         <Input
-          placeholder="Tags"
-          name="tags"
-          value={formData.tags}
+          placeholder="Live Link"
+          name="liveLink"
+          value={formData.liveLink}
           onChange={handleInputChange}
         />
-        <Button onClick={handleSubmitForm}>Save</Button>
+        <Input
+          placeholder="Tags"
+          name="tags"
+          value={formData.tags.join(", ")}
+          onChange={handleTagsInputChange}
+        />
+        <p>
+          Note : Please separate tags with comma (,). Example: react, nodejs,
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {formData.tags.map((tag, index) => (
+            <Badge key={index}>{tag}</Badge>
+          ))}
+        </div>
+        <Button loading={loading} onClick={handleSubmitForm}>
+          Save
+        </Button>
       </div>
     </div>
   );

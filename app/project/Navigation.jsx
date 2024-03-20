@@ -1,14 +1,12 @@
 "use client";
 
-import { getDevProfile } from "@/helper/apis";
-import { openModal } from "@/redux/slices/modalSlice";
+
 import { setUserDetails } from "@/redux/slices/userSlice";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { signIn, useSession } from "next-auth/react";
+import {  useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Navigation = () => {
