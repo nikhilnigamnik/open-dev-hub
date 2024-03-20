@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "./Navigation";
-import BottomNav from "./BottomNav";
+import Navigation from "../../components/Navigation";
+import BottomNav from "../../components/BottomNav";
 
 const layout = ({ children,params }) => {
   return (

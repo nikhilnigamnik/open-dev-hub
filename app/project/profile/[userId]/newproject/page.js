@@ -12,7 +12,7 @@ const page = ({ params }) => {
     title: "",
     description: "",
     link: "",
-    tags: [""],
+    tags: [],
     liveLink: "",
     user: params.userId,
     userId: params.userId,

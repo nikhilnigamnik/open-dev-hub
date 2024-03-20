@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 import Link from "next/link";
 
@@ -23,6 +25,10 @@ const NavBar = () => {
             </li>
           </ul>
         </div> */}
+        <div className="flex items-center gap-4">
+          <FaXTwitter className="text-xl text-slate-100 cursor-pointer" />
+          <FaGithub className="text-xl text-slate-100 cursor-pointer" />
+        </div>
         {/* <Button>
           <Link href={"/login"}>Login</Link>
         </Button> */}

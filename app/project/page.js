@@ -1,7 +1,7 @@
 "use client";
-
 import { CardSpotlight } from "@/components/CardSpotlight";
 import ProjectLoader from "@/components/Loader/ProjectLoader";
+import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -27,7 +27,7 @@ const Page = async () => {
         {/* <div className="p-2 rounded-xl border border-border bg-secondary">
           Filter Data
         </div> */}
-        <div className="flex flex-col gap-4">
+        {/* <div className="flex flex-col gap-4">
           {project.map((el) => (
             <CardSpotlight
               className={"lg:w-4/6 w-full"}
@@ -50,9 +50,9 @@ const Page = async () => {
               <p className="text-gray-200">{el?.tags}</p>
             </CardSpotlight>
           ))}
-        </div>
+        </div> */}
 
-        {/* {loading ? (
+        {loading ? (
           <ProjectLoader />
         ) : (
           <div className="flex flex-col gap-4">
@@ -75,11 +75,15 @@ const Page = async () => {
                 <p className="text-lg font-bold text-gradient">{el?.title}</p>
                 <p className="text-gray-200">{el?.description}</p>
                 <p className="text-gray-200">{el?.link}</p>
-                <p className="text-gray-200">{el?.tags}</p>
+                <div className="flex gap-3">
+                  {el?.tags.map((tag, index) => (
+                    <Badge key={index}>{tag}</Badge>
+                  ))}
+                </div>
               </CardSpotlight>
             ))}
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
