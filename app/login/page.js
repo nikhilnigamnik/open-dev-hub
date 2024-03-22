@@ -1,11 +1,17 @@
 "use client";
+
 import Container from "@/components/ui/Container";
+import { setLoginData, setlogin } from "@/redux/slices/userSlice";
 import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const page = () => {
+  const dispatch = useDispatch();
   const session = useSession();
+  dispatch(setLoginData(session?.data?.user));
+  dispatch(setlogin());
 
   if (session.status === "authenticated") {
     redirect("/project");

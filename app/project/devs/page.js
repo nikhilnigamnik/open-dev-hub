@@ -6,7 +6,6 @@ import React from "react";
 
 const Page = () => {
   const { data, isLoading } = useFetch("/api/user");
-
   return (
     <div className="md:ml-64  px-4 h-screen">
       <h1 className="text-gradient text-lg">Devs Profiles</h1>

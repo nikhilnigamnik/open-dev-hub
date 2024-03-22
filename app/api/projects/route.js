@@ -39,6 +39,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   const { title, description, tags, repoLink, userId } = await request.json();
+
   try {
     const res = await prisma.projects.create({
       data: {

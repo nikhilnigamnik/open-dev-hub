@@ -1,14 +1,14 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const BottomNav = () => {
   const pathname = usePathname();
-  const session = useSession();
-  if (session?.status === "unauthenticated") {
+  const user = useSelector((state) => state.user);
+  if (!user?.isLoggedIn) {
     redirect("/login");
   }
 
@@ -53,7 +53,7 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={`/project/profile/${session?.data?.user?.id}/newproject`}
+          href={`/project/profile/${user?.user?.id}/newproject`}
           className="flex items-center justify-center"
         >
           <button
@@ -107,12 +107,12 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={`/project/profile/${session?.data?.user?.id}`}
+          href={`/project/profile/${user?.user?.id}`}
           className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group"
         >
           <svg
             className={`w-5 h-5 mb-1 ${
-              pathname === `/project/profile/${session?.data?.user?.id}`
+              pathname === `/project/profile/${user?.user?.id}`
                 ? "text-yellow-300"
                 : "text-gray-500"
             }`}
