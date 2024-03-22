@@ -1,12 +1,10 @@
-import { connectDB } from "@/helper/connectDB";
-import { User } from "@/models/User";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
   try {
-    await connectDB();
-    const user = await User.find();
-    return NextResponse.json(user, {
+    const res = await prisma.users.findMany();
+    return NextResponse.json(res, {
       success: true,
     });
   } catch (error) {
@@ -17,4 +15,25 @@ export async function GET(request) {
   }
 }
 
+export async function POST(request) {
+  const { name, email, image } = await request.json();
+  try {
+    const res = await prisma.users.create({
+      data: {
+        name,
+        email,
+        image,
+      },
+    });
 
+    return NextResponse.json(res, {
+      success: true,
+    });
+  } catch (error) {
+    console.log(error.message);
+    return NextResponse.json({
+      success: false,
+      message: error.message,
+    });
+  }
+}

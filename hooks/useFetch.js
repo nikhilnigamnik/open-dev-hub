@@ -12,9 +12,7 @@ const useFetch = (apiUrl) => {
       setIsError(false);
       try {
         const res = await axios.get(apiUrl);
-        if (mounted) {
-          setData(res.data);
-        }
+        setData(res.data);
       } catch (error) {
         setIsError(true);
       }

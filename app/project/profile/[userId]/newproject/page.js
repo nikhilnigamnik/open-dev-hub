@@ -52,9 +52,9 @@ const page = ({ params }) => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <h1 className="text-gradient text-lg font-semibold">Add Project</h1>
-      <div className="flex flex-col gap-4 mt-8">
+      <div className="flex flex-col gap-4 mt-4">
         <Input
           placeholder="Title"
           name="title"

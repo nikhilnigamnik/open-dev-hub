@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "../../components/Navigation";
 import BottomNav from "../../components/BottomNav";
 
-const layout = ({ children,params }) => {
+const layout = ({ children }) => {
   return (
     <div>
       <Navigation />

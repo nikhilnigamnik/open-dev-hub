@@ -1,33 +1,17 @@
 "use client";
 
-
-import { setUserDetails } from "@/redux/slices/userSlice";
-import axios from "axios";
-import {  useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
   const session = useSession();
-  const getDevProfile = async () => {
-    try {
-      const res = await axios.get(`/api/user/${session?.data?.user?.email}`);
-      dispatch(setUserDetails(res.data));
-    } catch (error) {}
-  };
-  useEffect(() => {
-    getDevProfile();
-  }, [session]);
-
+  console.log(session);
   const pathname = usePathname();
-
   return (
     <>
-      <aside className="fixed top-0 left-0 z-40 w-64 h-screen mt-20 transition-transform -translate-x-full   md:translate-x-0 ">
+      <aside className="fixed top-0 left-0 z-40 w-64 h-screen mt-20 transition-transform -translate-x-full   lg:translate-x-0 ">
         <div className="h-full px-3 pb-4 overflow-y-auto ">
           <ul className="space-y-2 font-medium">
             <li>
@@ -99,11 +83,11 @@ const Navigation = () => {
               </Link>
             </li>
 
-            {session.status === "authenticated" ? (
+            {session?.status === "authenticated" ? (
               <>
                 <li>
                   <Link
-                    href={`/project/profile/${user?._id}`}
+                    href={`/project/profile/${session?.data?.user?.id}`}
                     className={`rounded-full  flex items-center   px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
                       pathname === "/project/profile/:id"
                         ? "text-yellow-300"
@@ -126,7 +110,7 @@ const Navigation = () => {
                 </li>
                 <li>
                   <Link
-                    href={`/project/profile/${user?._id}/newproject`}
+                    href={`/project/profile/${session?.data?.user?.id}/newproject`}
                     className={`rounded-xl ml-4 w-fit flex items-center border border-border   px-4 py-1 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
                       pathname === "/project/profile/:id"
                         ? "text-yellow-300"

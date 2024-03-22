@@ -6,7 +6,7 @@ import React from "react";
 
 const page = () => {
   const session = useSession();
-  
+
   if (session.status === "authenticated") {
     redirect("/project");
   }

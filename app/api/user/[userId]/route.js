@@ -1,31 +1,22 @@
-import { connectDB } from "@/helper/connectDB";
-import { User } from "@/models/User";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import mongoose from 'mongoose';
 
 export async function GET(request, { params }) {
+  const { userId } = params;
   try {
-    await connectDB();
-    const { userId } = params;
-    
-    let user;
-    if (mongoose.Types.ObjectId.isValid(userId)) {
-      user = await User.findOne({ _id: userId });
-    } else {
-      user = await User.findOne({ email: userId });
-    }
+    const res = await prisma.users.findUnique({
+      where: {
+        id: userId,
+      },
+      include: {
+        project: true,
+      },
+    });
 
-    if (!user) {
-      return NextResponse.json({
-        success: false,
-        message: "User not found",
-      });
-    }
-    return NextResponse.json(user, {
+    return NextResponse.json(res, {
       success: true,
     });
   } catch (error) {
-    console.error(error);
     return NextResponse.json({
       success: false,
       message: error.message,
