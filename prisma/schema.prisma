@@ -32,6 +32,7 @@ model projects {
   description String
   status      Boolean
   repoLink    String
+  projectLink String
   tags        String[]
   userId      String   @db.ObjectId
   user        users    @relation(fields: [userId], references: [id])

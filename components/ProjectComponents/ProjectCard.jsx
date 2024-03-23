@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const ProjectCard = ({ data }) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex animate_in  flex-col gap-4">
       {data.map((el) => (
         <CardSpotlight className={"lg:w-4/6 w-full"} key={el?._id} hoverEffect>
           <div className="flex items-center gap-4">

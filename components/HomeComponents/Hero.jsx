@@ -51,7 +51,6 @@ const Hero = () => {
             src={
               "https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png"
             }
-            className={"w-full rounded-md"}
             alt={"Banner"}
           />
         </CardSpotlight>

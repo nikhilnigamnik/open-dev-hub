@@ -11,9 +11,9 @@ const page = ({ params }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    link: "",
+    repoLink: "",
     tags: [],
-    liveLink: "",
+    projectLink: "",
     user: params.userId,
     userId: params.userId,
   });
@@ -24,7 +24,7 @@ const page = ({ params }) => {
       if (
         !formData.title ||
         !formData.description ||
-        !formData.link ||
+        !formData.repoLink ||
         !formData.tags
       ) {
         toast("Please fill all the fields");
@@ -34,10 +34,10 @@ const page = ({ params }) => {
       setFormData({
         title: "",
         description: "",
-        link: "",
+        repoLink: "",
+        projectLink: "",
         tags: "",
       });
-      console.log(res.data);
     } catch (error) {}
     setLoading(false);
   };
@@ -52,7 +52,7 @@ const page = ({ params }) => {
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 animate_in ">
       <h1 className="text-gradient text-lg font-semibold">Add Project</h1>
       <div className="flex flex-col gap-4 mt-4">
         <Input
@@ -69,14 +69,14 @@ const page = ({ params }) => {
         />
         <Input
           placeholder="Repository Link"
-          name="link"
-          value={formData.link}
+          name="repoLink"
+          value={formData.repoLink}
           onChange={handleInputChange}
         />
         <Input
           placeholder="Live Link"
-          name="liveLink"
-          value={formData.liveLink}
+          name="projectLink"
+          value={formData.projectLink}
           onChange={handleInputChange}
         />
         <Input

@@ -16,7 +16,7 @@ const layout = ({ children }) => {
 
   return (
     <div className="lg:ml-64 text-white px-4">
-      <div className="flex items-center gap-4">
+      <div className="flex animate_in  items-center gap-4">
         <Image
           className="rounded-full border-border border p-2 bg-secondary"
           src={user?.image}

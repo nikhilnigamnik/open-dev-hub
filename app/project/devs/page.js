@@ -16,7 +16,7 @@ const Page = () => {
           data.map((dev) => (
             <div
               key={dev?._id}
-              className="flex flex-col justify-center items-center gap-4"
+              className="flex animate_in  flex-col justify-center items-center gap-4"
             >
               <Image
                 src={dev.image}

@@ -16,7 +16,7 @@ const Page = ({ params }) => {
           <ProjectLoader />
         ) : (
           data?.project.map((el) => (
-            <CardSpotlight key={el?._id} hoverEffect>
+            <CardSpotlight className={"animate_in "} key={el?._id} hoverEffect>
               <p>{el?.title}</p>
               <p>{el?.description}</p>
               <p>{el?.link}</p>jn

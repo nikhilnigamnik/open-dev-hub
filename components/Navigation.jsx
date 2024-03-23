@@ -81,13 +81,13 @@ const Navigation = () => {
               </Link>
             </li>
 
-            {user?.isLoggedIn ? (
+            {user?.user ? (
               <>
                 <li>
                   <Link
                     href={`/project/profile/${user?.user?.id}`}
                     className={`rounded-full  flex items-center   px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10   hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15  ${
-                      pathname === "/project/profile/:id"
+                      pathname === `/project/profile/${user?.user?.id}`
                         ? "text-yellow-300"
                         : "text-gradient"
                     }`}

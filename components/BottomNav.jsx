@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const BottomNav = () => {
   const pathname = usePathname();
-  const user = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <div className="fixed block lg:hidden z-50  left-2 right-2   rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15">
@@ -50,7 +50,7 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={`/project/profile/${user?.user?.id}/newproject`}
+          href={`/project/profile/${user?.id}/newproject`}
           className="flex items-center justify-center"
         >
           <button
@@ -104,14 +104,12 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={
-            !user?.isLoggedIn ? `/project/profile/${user?.user?.id}` : "/login"
-          }
+          href={user ? `/project/profile/${user?.id}` : "/login"}
           className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group"
         >
           <svg
             className={`w-5 h-5 mb-1 ${
-              pathname === `/project/profile/${user?.user?.id}`
+              pathname === `/project/profile/${user?.id}`
                 ? "text-yellow-300"
                 : "text-gray-500"
             }`}
