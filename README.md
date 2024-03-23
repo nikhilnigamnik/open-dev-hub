@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# OpneDevHub
 
-First, run the development server:
+OpenDevHub is a community of developers, designers, and creators
+
+
+## Screenshots
+
+![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png)
+
+
+## Connect with us
+
+As a community, we always encourage people to share their thoughts and ideas. Do you want to talk to us? Follow our Twitter page ⬇️
+
+[![TWITTER - Join](https://img.shields.io/badge/TWITTER-Follow-f3f6f4?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nikhil_nigamnik)
+
+## Tech stack
+
+![Next.js](https://img.shields.io/badge/Next.js-f3f6f4?style=for-the-badge&logo=next.js&logoColor=black)
+
+![tailwind css](https://img.shields.io/badge/tailwind_css-f3f6f4?style=for-the-badge&logo=tailwindcss&logoColor=black)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-f3f6f4?style=for-the-badge&logo=mongodb&logoColor=black)
+
+![Prisma](https://img.shields.io/badge/Prisma-f3f6f4?style=for-the-badge&logo=prisma&logoColor=black)
+
+**Client** : NextJs, TailwindCss, Redux Toolkit
+
+**Server** : NextJs API, MongoDB, Prisma ORM, Next-Auth
+
+
+
+## Authors
+
+- [@nikhilnigamnik](https://www.github.com/nikhilnigamnik)
+
+
+## Run Locally
+
+> Before getting into it, make sure you have [yarn](https://yarnpkg.com/) and [prisma](https://prisma.io) installed.
+
+1. Fork the project
+
+2. Clone the repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/<your-github-username->/open-dev-hub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Go into the project directory
+   ```sh
+    cd open-dev-hub
+   ```
+4. Create an `.env` file from the `.env.template` file (copy everything in the `.env.template` file and put it in the `.env` file with appropriate values)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   - `MONGODB_URI` is the `connection string` which you'll get from mongodb [for reference](https://www.mongodb.com/docs/manual/reference/connection-string/).
+   - `NEXTAUTH_SECRET` Just pass any `random string` or you can quickly create a good value on the command line via this `openssl command`.
+     <br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```sh
+    openssl rand -base64 32
+   ```
 
-## Learn More
+5. Install all the dependencies
+   ```sh
+   npm / yarn install
+   ```
+8. Start the application development server
+   ```sh
+   npm / yarn run dev
+   ```
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are always welcome!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `contributing.md` for ways to get started.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Please adhere to this project's `code of conduct`.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Don't forget to support us by leaving a star ⭐

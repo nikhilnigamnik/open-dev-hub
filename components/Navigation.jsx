@@ -81,7 +81,7 @@ const Navigation = () => {
               </Link>
             </li>
 
-            {user?.isLoggedIn === true ? (
+            {user?.isLoggedIn ? (
               <>
                 <li>
                   <Link

@@ -11,9 +11,9 @@ const page = () => {
   const dispatch = useDispatch();
   const session = useSession();
   dispatch(setLoginData(session?.data?.user));
-  dispatch(setlogin());
 
   if (session.status === "authenticated") {
+    dispatch(setlogin());
     redirect("/project");
   }
   return (

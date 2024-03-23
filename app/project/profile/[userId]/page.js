@@ -1,6 +1,7 @@
 "use client";
 import { CardSpotlight } from "@/components/CardSpotlight";
 import ProjectLoader from "@/components/Loader/ProjectLoader";
+import { Badge } from "@/components/ui/badge";
 import useFetch from "@/hooks/useFetch";
 import React from "react";
 
@@ -19,7 +20,11 @@ const Page = ({ params }) => {
               <p>{el?.title}</p>
               <p>{el?.description}</p>
               <p>{el?.link}</p>jn
-              <p>{el?.tags}</p>
+              <div className="flex gap-3">
+                {el?.tags.map((tag, index) => (
+                  <Badge key={index}>{tag}</Badge>
+                ))}
+              </div>
             </CardSpotlight>
           ))
         )}
