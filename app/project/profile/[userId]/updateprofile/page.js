@@ -32,7 +32,7 @@ const page = ({ params }) => {
     }
     setLoading(true);
     try {
-      await axios.post("/api/project", formData);
+      await axios.put("/user", formData);
       toast("Project added successfully", { type: "success" });
       setFormData({
         title: "",
@@ -58,7 +58,7 @@ const page = ({ params }) => {
   return (
     <div className="mt-4 animate_in ">
       <div className="flex justify-between items-center">
-        <h1 className="text-gradient text-lg font-semibold">Add Project</h1>
+        <h1 className="text-gradient text-lg font-semibold">Update Profile</h1>
         <p
           onClick={() => router.back()}
           className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm cursor-pointer"

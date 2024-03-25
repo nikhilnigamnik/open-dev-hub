@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 const page = () => {
   const dispatch = useDispatch();
   const session = useSession();
+
   dispatch(setLoginData(session?.data?.user));
 
   if (session.status === "authenticated") {

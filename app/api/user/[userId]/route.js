@@ -23,3 +23,31 @@ export async function GET(request, { params }) {
     });
   }
 }
+
+export async function PUT(request, { params }) {
+  const { userId } = params;
+  const { twitter, github, linkedin, portfolio, skills } = await request.json();
+  try {
+    const res = await prisma.users.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        twitter,
+        github,
+        skills,
+        linkedin,
+        portfolio,
+      },
+    });
+
+    return NextResponse.json(res, {
+      success: true,
+    });
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      message: error.message,
+    });
+  }
+}

@@ -46,7 +46,9 @@ const ProjectCard = ({ data }) => {
           <div className="flex justify-between items-center">
             <div className="flex gap-3 ">
               {el?.tags.map((tag, index) => (
-                <Badge key={index}>{tag}</Badge>
+                <Badge  key={index}>
+                  {tag}
+                </Badge>
               ))}
             </div>
 

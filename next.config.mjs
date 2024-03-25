@@ -7,6 +7,11 @@ const nextConfig = {
       "lh3.googleusercontent.com",
     ],
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
 export default nextConfig;

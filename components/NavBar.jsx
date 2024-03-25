@@ -12,26 +12,13 @@ const NavBar = () => {
         <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           <Link href={"/"}>OpenDevHub</Link>
         </h1>
-        {/* <div className="hidden md:block">
-          <ul className="flex   justify-between items-center gap-10 text-slate-100">
-            <li>
-              <Link href={"/project"}>Projects</Link>
-            </li>
-            <li>
-              <Link href={"/blog"}>Blog</Link>
-            </li>
-            <li>
-              <Link href={"/community"}>Community</Link>
-            </li>
-          </ul>
-        </div> */}
+
         <div className="flex items-center gap-4">
           <FaXTwitter className="text-xl text-slate-100 cursor-pointer" />
-          <FaGithub className="text-xl text-slate-100 cursor-pointer" />
+          <Link href={"https://github.com/nikhilnigamnik/open-dev-hub"}>
+            <FaGithub className="text-xl text-slate-100 cursor-pointer" />
+          </Link>
         </div>
-        {/* <Button>
-          <Link href={"/login"}>Login</Link>
-        </Button> */}
       </div>
     </nav>
   );
