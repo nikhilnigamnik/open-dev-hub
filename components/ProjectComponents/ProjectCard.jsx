@@ -6,6 +6,7 @@ import { CiMedicalClipboard } from "react-icons/ci";
 import { useCopyToClipboard } from "usehooks-ts";
 import { toast } from "sonner";
 import Link from "next/link";
+import { GitIcon } from "../Icon/Icon";
 
 const ProjectCard = ({ data }) => {
   const [copiedText, copy] = useCopyToClipboard();
@@ -33,7 +34,7 @@ const ProjectCard = ({ data }) => {
             </div>
             <div className="flex items-center gap-4 ">
               <Link href={el?.repoLink}>
-                <Badge>Repo</Badge>
+                <GitIcon />
               </Link>
               <Link href={el?.projectLink}>
                 <Badge>Visit</Badge>
@@ -46,9 +47,7 @@ const ProjectCard = ({ data }) => {
           <div className="flex justify-between items-center">
             <div className="flex gap-3 ">
               {el?.tags.map((tag, index) => (
-                <Badge  key={index}>
-                  {tag}
-                </Badge>
+                <Badge key={index}>{tag}</Badge>
               ))}
             </div>
 
@@ -60,6 +59,12 @@ const ProjectCard = ({ data }) => {
           </div>
         </CardSpotlight>
       ))}
+
+      {data.length === 0 && (
+        <div className="flex justify-center items-center h-[40vh]">
+          <p className="text-gradient">No Projects Found</p>
+        </div>
+      )}
     </div>
   );
 };

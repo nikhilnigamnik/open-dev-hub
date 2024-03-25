@@ -6,7 +6,8 @@ import useFetch from "@/hooks/useFetch";
 import { useState } from "react";
 
 const Page = () => {
-  const { data, isLoading } = useFetch("/api/projects");
+  const [tag, setTag] = useState("");
+  const { data, isLoading } = useFetch(`/api/projects?tags=${tag}`);
   const [searchData, setSearchData] = useState("");
 
   const filteredData = data?.filter((project) =>

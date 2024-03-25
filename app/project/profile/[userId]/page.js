@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 
 const Page = ({ params }) => {
-  const { data, isLoading} = useFetch(`/api/user/${params.userId}`);
+  const { data, isLoading } = useFetch(`/api/user/${params.userId}`);
 
   return (
     <div className="mt-4">
@@ -34,6 +34,9 @@ const Page = ({ params }) => {
               </div>
             </CardSpotlight>
           ))
+        )}
+        {data?.project.length === 0 && (
+          <p className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm ">No Projects Found</p>
         )}
       </div>
     </div>
