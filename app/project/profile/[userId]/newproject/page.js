@@ -6,53 +6,35 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 const page = ({ params }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    repoLink: "",
-    tags: [],
-    projectLink: "",
-    user: params.userId,
-    userId: params.userId,
-  });
+  const { handleSubmit, register, reset } = useForm();
+  const [tags, setTags] = useState([]);
 
-  const handleSubmitForm = async () => {
-    if (
-      !formData.title ||
-      !formData.description ||
-      !formData.repoLink ||
-      !formData.tags
-    ) {
-      toast("Please fill all the fields");
-      return;
-    }
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await axios.post("/api/project", formData);
-      toast("Project added successfully", { type: "success" });
-      setFormData({
-        title: "",
-        description: "",
-        repoLink: "",
-        projectLink: "",
-        tags: "",
+      const tagsArray = data.tags.split(",").map((tag) => tag.trim());
+      await axios.post("/api/projects", {
+        ...data,
+        tags: tagsArray,
+        userId: params.userId,
       });
+      toast("Project added successfully", { type: "success" });
+      reset();
     } catch (error) {
+      toast("Something went wrong", { type: "error" });
+    } finally {
       setLoading(false);
     }
   };
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleTagsInputChange = (e) => {
     const tagsArray = e.target.value.split(",").map((tag) => tag.trim());
-    setFormData({ ...formData, tags: tagsArray });
+    setTags(tagsArray);
   };
 
   return (
@@ -66,49 +48,43 @@ const page = ({ params }) => {
           Go Back
         </p>
       </div>
-      <div className="flex flex-col gap-4 mt-4">
-        <Input
-          placeholder="Title"
-          name="title"
-          value={formData.title}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Description"
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Repository Link"
-          name="repoLink"
-          value={formData.repoLink}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Live Link"
-          name="projectLink"
-          value={formData.projectLink}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Tags"
-          name="tags"
-          value={formData.tags.join(", ")}
-          onChange={handleTagsInputChange}
-        />
-        <p>
-          Note : Please separate tags with comma (,). Example: react, nodejs,
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {formData.tags.map((tag, index) => (
-            <Badge key={index}>{tag}</Badge>
-          ))}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-4 mt-4">
+          <Input placeholder="Title" name="title" {...register("title")} />
+          <Input
+            placeholder="Description"
+            name="description"
+            {...register("description")}
+          />
+          <Input
+            placeholder="Repository Link"
+            name="repoLink"
+            {...register("repoLink")}
+          />
+          <Input
+            placeholder="Live Link"
+            name="projectLink"
+            {...register("projectLink")}
+          />
+          <Input
+            placeholder="Tags"
+            name="tags"
+            {...register("tags")}
+            onChange={handleTagsInputChange}
+          />
+          <p>
+            Note : Please separate tags with comma (,). Example: react, nodejs,
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, index) => (
+              <Badge key={index}>{tag}</Badge>
+            ))}
+          </div>
+          <Button loading={loading} type="submit">
+            Save
+          </Button>
         </div>
-        <Button loading={loading} onClick={handleSubmitForm}>
-          Save
-        </Button>
-      </div>
+      </form>
     </div>
   );
 };

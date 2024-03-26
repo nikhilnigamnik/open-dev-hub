@@ -33,21 +33,22 @@ const buttonVariants = cva(
 );
 
 const Button = React.forwardRef(
-  ({ className, variant, size, loading, asChild = false, ...props }, ref) => {
+  (
+    { className, variant, size, loading, asChild = false, ...props },
+    type,
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
+        type={type}
         className={cn(buttonVariants({ variant, size, className }), {
           "opacity-50 pointer-events-none": loading,
         })}
         ref={ref}
         {...props}
       >
-        {loading ? (
-          <span>Saving...</span>
-        ) : (
-          props.children
-        )}
+        {loading ? <span>Saving...</span> : props.children}
       </Comp>
     );
   }

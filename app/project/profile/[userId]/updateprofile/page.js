@@ -4,56 +4,36 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { toast } from "sonner";
-import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginData } from "@/redux/slices/userSlice";
+import { useForm } from "react-hook-form";
 
 const page = ({ params }) => {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    repoLink: "",
-    tags: [],
-    projectLink: "",
-    user: params.userId,
-    userId: params.userId,
-  });
+  const { handleSubmit, register, setValue, reset } = useForm();
 
-  const handleSubmitForm = async () => {
-    if (
-      !formData.title ||
-      !formData.description ||
-      !formData.repoLink ||
-      !formData.tags
-    ) {
-      toast("Please fill all the fields");
-      return;
-    }
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
-      await axios.put("/user", formData);
-      toast("Project added successfully", { type: "success" });
-      setFormData({
-        title: "",
-        description: "",
-        repoLink: "",
-        projectLink: "",
-        tags: "",
-      });
+      const res = await axios.put(`/api/user/${params.userId}`, data);
+      dispatch(setLoginData(res.data));
+      reset();
+      toast(" Profile Updated ", { type: "success" });
     } catch (error) {
+      toast("Something went wrong", { type: "error" });
+    } finally {
       setLoading(false);
     }
   };
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleTagsInputChange = (e) => {
-    const tagsArray = e.target.value.split(",").map((tag) => tag.trim());
-    setFormData({ ...formData, tags: tagsArray });
-  };
+  setValue("twitter", user?.twitter);
+  setValue("github", user?.github);
+  setValue("linkedin", user?.linkedin);
+  setValue("portfolio", user?.portfolio);
 
   return (
     <div className="mt-4 animate_in ">
@@ -66,49 +46,37 @@ const page = ({ params }) => {
           Go Back
         </p>
       </div>
-      <div className="flex flex-col gap-4 mt-4">
-        <Input
-          placeholder="Title"
-          name="title"
-          value={formData.title}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Description"
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Repository Link"
-          name="repoLink"
-          value={formData.repoLink}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Live Link"
-          name="projectLink"
-          value={formData.projectLink}
-          onChange={handleInputChange}
-        />
-        <Input
-          placeholder="Tags"
-          name="tags"
-          value={formData.tags.join(", ")}
-          onChange={handleTagsInputChange}
-        />
-        <p>
-          Note : Please separate tags with comma (,). Example: react, nodejs,
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {formData.tags.map((tag, index) => (
-            <Badge key={index}>{tag}</Badge>
-          ))}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-4 mt-4">
+          <Input
+            placeholder="Twitter"
+            name="twitter"
+            id="twitter"
+            {...register("twitter")}
+          />
+          <Input
+            placeholder="Github"
+            name="github"
+            id="github"
+            {...register("github")}
+          />
+          <Input
+            placeholder="Linkedin"
+            name="linkedin"
+            id="linkedin"
+            {...register("linkedin")}
+          />
+          <Input
+            placeholder="Portfolio"
+            name="portfolio"
+            id="portfolio"
+            {...register("portfolio")}
+          />
+          <Button loading={loading} type="submit">
+            Save
+          </Button>
         </div>
-        <Button loading={loading} onClick={handleSubmitForm}>
-          Save
-        </Button>
-      </div>
+      </form>
     </div>
   );
 };
