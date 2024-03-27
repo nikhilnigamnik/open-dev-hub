@@ -42,6 +42,19 @@ export async function POST(request) {
     await request.json();
 
   try {
+    if (
+      !title ||
+      !description ||
+      !tags ||
+      !repoLink ||
+      !projectLink ||
+      !userId
+    ) {
+      return NextResponse.json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
     const res = await prisma.projects.create({
       data: {
         title,

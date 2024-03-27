@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Container from "../ui/Container";
 import { CardSpotlight } from "../CardSpotlight";
+import NextImage from "../NextImage";
 
 const Hero = () => {
   return (
@@ -47,7 +48,9 @@ const Hero = () => {
       </div>
       <Container>
         <CardSpotlight hoverEffect>
-          <img
+          <NextImage
+            width={2000}
+            height={100}
             src={
               "https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png"
             }

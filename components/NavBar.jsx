@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 
 import Link from "next/link";
+import { GitIcon, TwitterIcon } from "./Icon/Icon";
 
 const NavBar = () => {
   return (
@@ -14,9 +15,9 @@ const NavBar = () => {
         </h1>
 
         <div className="flex items-center gap-4">
-          <FaXTwitter className="text-xl text-slate-100 cursor-pointer" />
+          <TwitterIcon />
           <Link href={"https://github.com/nikhilnigamnik/open-dev-hub"}>
-            <FaGithub className="text-xl text-slate-100 cursor-pointer" />
+            <GitIcon />
           </Link>
         </div>
       </div>

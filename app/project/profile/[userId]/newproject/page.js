@@ -18,13 +18,18 @@ const page = ({ params }) => {
     setLoading(true);
     try {
       const tagsArray = data.tags.split(",").map((tag) => tag.trim());
-      await axios.post("/api/projects", {
+      const res = await axios.post("/api/projects", {
         ...data,
         tags: tagsArray,
         userId: params.userId,
       });
-      toast("Project added successfully", { type: "success" });
-      reset();
+
+      if (res.success === 200) {
+        toast("Project added successfully", { type: "success" });
+        reset();
+      } else {
+        toast("Something went wrong", { type: "error" });
+      }
     } catch (error) {
       toast("Something went wrong", { type: "error" });
     } finally {
