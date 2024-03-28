@@ -23,7 +23,7 @@ const page = ({ params }) => {
         tags: tagsArray,
         userId: params.userId,
       });
-
+      reset();
       toast("Project added successfully", { type: "success" });
     } catch (error) {
       toast("Something went wrong", { type: "error" });
