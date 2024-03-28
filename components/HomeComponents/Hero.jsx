@@ -39,20 +39,17 @@ const Hero = () => {
         <p className=" text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           OpenDevHub is a community of developers, designers, and creators
         </p>
-        <div className="flex justify-between gap-4">
-          <Button>
-            <Link href={"/project"}>Explore Projects</Link>
-          </Button>
-          {/* <Button>Join Us</Button> */}
-        </div>
+
+        <Button>
+          <Link href={"/project"}>Explore Projects</Link>
+        </Button>
       </div>
       <Container>
         <CardSpotlight hoverEffect>
-          <NextImage
-            width={2000}
-            height={100}
+          <img
+            className="w-full"
             src={
-              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png"
+              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png"
             }
             alt={"Banner"}
           />

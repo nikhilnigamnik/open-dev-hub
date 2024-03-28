@@ -6,7 +6,18 @@ OpenDevHub is a community of developers, designers, and creators
 
 ## Screenshots
 
+## Landing
+
 ![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png)
+
+## Dashboard
+
+![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png)
+
+## Profile
+
+![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648277/Screenshot_2024-03-28_232017_fp16nn.png)
+
 
 
 ## Connect with us

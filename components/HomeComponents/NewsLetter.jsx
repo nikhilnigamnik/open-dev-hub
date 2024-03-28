@@ -13,13 +13,15 @@ const NewsLetter = () => {
   const handleSubscribe = async () => {
     if (!email) return toast("Please enter an email");
     try {
-      const res = await axios.post("/api/newsletter", { email });
+      await axios.post("/api/newsletter", { email });
+      setEmail("");
+      toast("Subscribed Successfully", { type: "success" });
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <section className="py-20">
+    <section className="pt-20">
       <Container className={"flex flex-col justify-center items-center"}>
         <h1 className={"text-3xl font-semibold text-gradient"}>
           Subscribe to our Newsletter

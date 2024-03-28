@@ -15,6 +15,17 @@ const page = ({ params }) => {
   const [tags, setTags] = useState([]);
 
   const onSubmit = async (data) => {
+    if (
+      !data.title &&
+      !data.description &&
+      !data.repoLink &&
+      !data.projectLink &&
+      !data.tags
+    ) {
+      toast("Please fill all fields", { type: "error" });
+      return;
+    }
+
     setLoading(true);
     try {
       const tagsArray = data.tags.split(",").map((tag) => tag.trim());
@@ -25,6 +36,7 @@ const page = ({ params }) => {
       });
       reset();
       toast("Project added successfully", { type: "success" });
+      router.back();
     } catch (error) {
       toast("Something went wrong", { type: "error" });
     } finally {

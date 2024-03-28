@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "../../components/Navigation";
+import Navigation from "../../components/Sidebar";
 import BottomNav from "../../components/BottomNav";
 
 const layout = ({ children }) => {

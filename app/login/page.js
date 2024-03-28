@@ -16,7 +16,7 @@ const page = () => {
     redirect("/project");
   }
   return (
-    <Container className={"py-20"}>
+    <Container className={"py-20 h-[60vh] flex justify-center items-center flex-col"}>
       <section className="flex flex-col gap-4 text-center">
         <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           OpenDevHub

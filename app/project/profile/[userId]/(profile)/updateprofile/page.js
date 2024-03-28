@@ -17,12 +17,15 @@ const page = ({ params }) => {
   const { handleSubmit, register, setValue, reset } = useForm();
 
   const onSubmit = async (data) => {
-    setLoading(true);
+    if (!data.twitter && !data.github && !data.linkedin && !data.portfolio)
+      return toast("Please fill at least one field", { type: "error" });
     try {
+      setLoading(true);
       const res = await axios.put(`/api/user/${params.userId}`, data);
       dispatch(setLoginData(res.data));
       reset();
       toast(" Profile Updated ", { type: "success" });
+      router.back();
     } catch (error) {
       toast("Something went wrong", { type: "error" });
     } finally {
