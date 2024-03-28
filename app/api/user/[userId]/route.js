@@ -51,3 +51,21 @@ export async function PUT(request, { params }) {
     });
   }
 }
+
+export async function DELETE(request, { params: { userId } }) {
+  try {
+    await prisma.users.delete({
+      where: { id: userId },
+    });
+
+    return NextResponse.json({
+      success: true,
+      messsage: "User Deleted",
+    });
+  } catch (error) {
+    return NextResponse.json({
+      success: false,
+      message: "Failed to delete user",
+    });
+  }
+}

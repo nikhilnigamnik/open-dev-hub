@@ -11,10 +11,10 @@ const page = () => {
   const dispatch = useDispatch();
   const session = useSession();
   dispatch(setLoginData(session?.data?.user));
-  if (session.status === "authenticated") {
-    dispatch(setlogin());
-    redirect("/project");
-  }
+  // if (session.status === "authenticated") {
+  //   dispatch(setlogin());
+  //   redirect("/project");
+  // }
   return (
     <Container className={"py-20"}>
       <section className="flex flex-col gap-4 text-center">
