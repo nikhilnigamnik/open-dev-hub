@@ -44,10 +44,13 @@ const Hero = () => {
           <Link href={"/project"}>Explore Projects</Link>
         </Button>
       </div>
-      <Container>
+      <Container className={"animate_in"}>
         <CardSpotlight hoverEffect>
           <img
-            className="w-full"
+            loading="lazy"
+            height={"100%"}
+            className="rounded-md"
+            width={"100%"}
             src={
               "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png"
             }

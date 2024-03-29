@@ -40,6 +40,7 @@ const layout = ({ children }) => {
           onClick={() => {
             dispatch(setLogout());
             signOut("google");
+            signOut("github");
           }}
         >
           Logout

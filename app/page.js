@@ -1,7 +1,6 @@
 import { CardSpotlight } from "@/components/CardSpotlight";
 import Hero from "@/components/HomeComponents/Hero";
 import NewsLetter from "@/components/HomeComponents/NewsLetter";
-import NextImage from "@/components/NextImage";
 import Container from "@/components/ui/Container";
 
 import React from "react";
@@ -11,7 +10,9 @@ const Home = () => {
     <main>
       <Hero />
 
-      <Container className={"flex justify-between flex-col gap-20 mt-10"}>
+      <Container
+        className={"flex justify-between flex-col gap-20 mt-10 animate_in"}
+      >
         <h3 className="text-gradient font-semibold text-3xl text-center">
           Features of the app
         </h3>
@@ -26,7 +27,10 @@ const Home = () => {
           </div>
           <CardSpotlight hoverEffect>
             <img
-              className="w-full"
+              loading="lazy"
+              height={"100%"}
+              className="rounded-md"
+              width={"100%"}
               src={
                 "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648277/Screenshot_2024-03-28_232017_fp16nn.png"
               }
@@ -43,7 +47,10 @@ const Home = () => {
           </div>
           <CardSpotlight hoverEffect>
             <img
-              className="w-full"
+              loading="lazy"
+              height={"100%"}
+              className="rounded-md"
+              width={"100%"}
               src={
                 "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648301/Screenshot_2024-03-28_232051_wmnzvl.png"
               }
@@ -62,7 +69,10 @@ const Home = () => {
           </div>
           <CardSpotlight hoverEffect>
             <img
-              className="w-full"
+              loading="lazy"
+              height={"100%"}
+              className="rounded-md"
+              width={"100%"}
               src={
                 "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648328/Screenshot_2024-03-28_232146_eoargs.png"
               }

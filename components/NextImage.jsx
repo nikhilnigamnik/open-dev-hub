@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 
 const NextImage = ({ src, width, height, alt }) => {
   const [isImageLoaded, setIsImageLoaded] = React.useState(true);
   return (
-    <Image
+    <img
+      loading="lazy"
       src={src}
       width={width}
       onLoad={() => setIsImageLoaded(false)}

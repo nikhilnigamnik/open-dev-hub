@@ -16,7 +16,9 @@ const page = () => {
     redirect("/project");
   }
   return (
-    <Container className={"py-20 h-[60vh] flex justify-center items-center flex-col"}>
+    <Container
+      className={"py-20 h-[60vh] flex justify-center items-center flex-col"}
+    >
       <section className="flex flex-col gap-4 text-center">
         <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           OpenDevHub
@@ -42,6 +44,7 @@ const page = () => {
         <button
           type="button"
           className="relative inline-flex w-full items-center justify-center rounded-full border-border  border text-blue-200 bg-secondary px-3.5 py-2.5 font-semibold  "
+          onClick={() => signIn("github")}
         >
           <span className="mr-2 inline-block">
             <svg

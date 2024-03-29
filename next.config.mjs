@@ -5,6 +5,7 @@ const nextConfig = {
       "images.pexels.com",
       "res.cloudinary.com",
       "lh3.googleusercontent.com",
+      "avatars.githubusercontent.com",
     ],
   },
   logging: {

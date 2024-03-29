@@ -8,20 +8,34 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginData } from "@/redux/slices/userSlice";
 import { useForm } from "react-hook-form";
+import { Badge } from "@/components/ui/badge";
 
 const page = ({ params }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [skills, setSkills] = useState([]);
+
   const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register, setValue, reset } = useForm();
 
   const onSubmit = async (data) => {
-    if (!data.twitter && !data.github && !data.linkedin && !data.portfolio)
+    if (
+      !data.twitter &&
+      !data.github &&
+      !data.linkedin &&
+      !data.portfolio &&
+      !data.skills
+    )
       return toast("Please fill at least one field", { type: "error" });
+    const skillsArray = data.skills.split(",").map((skill) => skill.trim());
+
     try {
       setLoading(true);
-      const res = await axios.put(`/api/user/${params.userId}`, data);
+      const res = await axios.put(`/api/user/${params.userId}`, {
+        ...data,
+        skills: skillsArray,
+      });
       dispatch(setLoginData(res.data));
       reset();
       toast(" Profile Updated ", { type: "success" });
@@ -31,6 +45,11 @@ const page = ({ params }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSkillsChange = (e) => {
+    const skillArray = e.target.value.split(",").map((skill) => skill.trim());
+    setSkills(skillArray);
   };
 
   setValue("twitter", user?.twitter);
@@ -51,6 +70,12 @@ const page = ({ params }) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4 mt-4">
+          <Input
+            placeholder="Title"
+            name="title"
+            id="title"
+            {...register("title")}
+          />
           <Input
             placeholder="Twitter"
             name="twitter"
@@ -75,6 +100,20 @@ const page = ({ params }) => {
             id="portfolio"
             {...register("portfolio")}
           />
+          <Input
+            placeholder="Skills"
+            name="skills"
+            {...register("skills")}
+            onChange={handleSkillsChange}
+          />
+          <p>
+            Note : Please separate skills with comma (,). Example: react, nextjs
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill, index) => (
+              <Badge key={index}>{skill}</Badge>
+            ))}
+          </div>
           <Button loading={loading} type="submit">
             Save
           </Button>
