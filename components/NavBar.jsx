@@ -15,7 +15,9 @@ const NavBar = () => {
         </h1>
 
         <div className="flex items-center gap-4">
-          <TwitterIcon />
+          <Link href={"https://twitter.com/nikhil_nigamnik"}>
+            <TwitterIcon />
+          </Link>
           <Link href={"https://github.com/nikhilnigamnik/open-dev-hub"}>
             <GitIcon />
           </Link>

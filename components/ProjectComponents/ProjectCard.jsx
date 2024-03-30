@@ -7,6 +7,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 import { toast } from "sonner";
 import Link from "next/link";
 import { GitIcon } from "../Icon/Icon";
+import NextImage from "../NextImage";
 
 const ProjectCard = ({ data }) => {
   const [copiedText, copy] = useCopyToClipboard();
@@ -23,7 +24,7 @@ const ProjectCard = ({ data }) => {
         <CardSpotlight className={"lg:w-4/6 w-full"} key={el?._id} hoverEffect>
           <div className="flex items-center gap-4 justify-between">
             <div className="flex items-center gap-4 ">
-              <Image
+              <NextImage
                 src={el?.user?.image}
                 alt="avatar"
                 height={30}

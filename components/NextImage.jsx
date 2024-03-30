@@ -1,19 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
-const NextImage = ({ src, width, height, alt }) => {
-  const [isImageLoaded, setIsImageLoaded] = React.useState(true);
+const NextImage = ({ height, width, src, alt, className }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <img
-      loading="lazy"
-      src={src}
-      width={width}
-      onLoad={() => setIsImageLoaded(false)}
-      height={height}
-      className={`${isImageLoaded ? "blur" : "remove-blur rounded-md"}`}
-      alt={alt}
-    />
+    <div
+      style={{
+        filter: imageLoaded ? "none" : "blur(20px)",
+        transition: "filter 0.5s ease",
+      }}
+    >
+      <img
+        loading="lazy"
+        height={height || "100%"}
+        className={className || "rounded-md"}
+        width={width || "100%"}
+        src={src}
+        alt={alt}
+        onLoad={() => setImageLoaded(true)}
+      />
+    </div>
   );
 };
 

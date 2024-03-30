@@ -1,6 +1,7 @@
 import { CardSpotlight } from "@/components/CardSpotlight";
 import Hero from "@/components/HomeComponents/Hero";
 import NewsLetter from "@/components/HomeComponents/NewsLetter";
+import NextImage from "@/components/NextImage";
 import Container from "@/components/ui/Container";
 
 import React from "react";
@@ -26,10 +27,8 @@ const Home = () => {
             </p>
           </div>
           <CardSpotlight hoverEffect>
-            <img
-              loading="lazy"
+            <NextImage
               height={"100%"}
-              className="rounded-md"
               width={"100%"}
               src={
                 "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648277/Screenshot_2024-03-28_232017_fp16nn.png"
@@ -46,8 +45,7 @@ const Home = () => {
             </p>
           </div>
           <CardSpotlight hoverEffect>
-            <img
-              loading="lazy"
+            <NextImage
               height={"100%"}
               className="rounded-md"
               width={"100%"}
@@ -68,8 +66,7 @@ const Home = () => {
             </p>
           </div>
           <CardSpotlight hoverEffect>
-            <img
-              loading="lazy"
+            <NextImage
               height={"100%"}
               className="rounded-md"
               width={"100%"}

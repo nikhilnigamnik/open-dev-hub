@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Container from "../ui/Container";
@@ -6,6 +8,8 @@ import { CardSpotlight } from "../CardSpotlight";
 import NextImage from "../NextImage";
 
 const Hero = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <>
       <div className="flex  animate_in justify-center gap-4 items-center flex-col md:h-[60vh] h-[50vh] max-w-5xl m-auto px-4">
@@ -46,10 +50,8 @@ const Hero = () => {
       </div>
       <Container className={"animate_in"}>
         <CardSpotlight hoverEffect>
-          <img
-            loading="lazy"
+          <NextImage
             height={"100%"}
-            className="rounded-md"
             width={"100%"}
             src={
               "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png"

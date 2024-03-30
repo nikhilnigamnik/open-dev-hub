@@ -1,7 +1,8 @@
 "use client";
+
 import DevProfileLoader from "@/components/Loader/DevProfileLoader";
+import NextImage from "@/components/NextImage";
 import useFetch from "@/hooks/useFetch";
-import Image from "next/image";
 import React from "react";
 
 const Page = () => {
@@ -18,11 +19,11 @@ const Page = () => {
               key={dev?._id}
               className="flex animate_in  flex-col justify-center items-center gap-4"
             >
-              <Image
+              <NextImage
                 src={dev.image}
                 width={60}
                 height={60}
-                className=" rounded-full"
+                className="rounded-full"
                 alt={dev.name}
               />
               <p className="text-gradient text-sm">{dev.name}</p>
