@@ -1,14 +1,13 @@
 "use client";
 
 import {
-  AddIcon,
   GitIcon,
   LinkedInIcon,
   TwitterIcon,
 } from "@/components/Icon/Icon";
+import NextImage from "@/components/NextImage";
 import { setLogout } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +22,7 @@ const layout = ({ children }) => {
   return (
     <div className="lg:ml-64 text-white px-4 flex flex-col gap-4">
       <div className="flex animate_in  items-center gap-4">
-        <Image
+        <NextImage
           className="rounded-full border-border border p-2 bg-secondary"
           src={user?.image}
           height={100}
