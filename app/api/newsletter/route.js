@@ -1,3 +1,4 @@
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -64,6 +65,11 @@ export async function POST(request) {
 
   try {
     const res = await transporter.sendMail(mailOptions);
+    await prisma.newsletter.create({
+      data: {
+        email,
+      },
+    });
     return NextResponse.json(res, { message: "Email sent" });
   } catch (error) {
     return NextResponse.json(error, { message: "Email not sent" });

@@ -48,7 +48,7 @@ const Button = React.forwardRef(
         ref={ref}
         {...props}
       >
-        {loading ? <span>Saving...</span> : props.children}
+        {loading ? <span>Loading...</span> : props.children}
       </Comp>
     );
   }

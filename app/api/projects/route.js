@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { handleError, handleSuccess } from "@/middlewares/responseMessage";
 
 export async function GET(request) {
   const searchParams = request.nextUrl.searchParams;
@@ -16,24 +16,17 @@ export async function GET(request) {
           user: true,
         },
       });
-      return NextResponse.json(res, {
-        success: true,
-      });
+      return handleSuccess(res, "Projects fetched successfully", 200);
     } else {
       const res = await prisma.projects.findMany({
         include: {
           user: true,
         },
       });
-      return NextResponse.json(res, {
-        success: true,
-      });
+      return handleSuccess(res, "Projects fetched successfully", 200);
     }
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      message: error.message,
-    });
+    return handleError(error.message, 500);
   }
 }
 
@@ -50,10 +43,7 @@ export async function POST(request) {
       !projectLink ||
       !userId
     ) {
-      return NextResponse.json({
-        success: false,
-        message: "All fields are required",
-      });
+      return handleError("All fields are required", 400);
     }
     const res = await prisma.projects.create({
       data: {
@@ -67,14 +57,10 @@ export async function POST(request) {
       },
     });
 
-    return NextResponse.json(res, {
-      success: true,
-    });
+    return handleSuccess(res, "Project added successfully", 201);
   } catch (error) {
     console.log(error.message);
-    return NextResponse.json({
-      success: false,
-      message: error.message,
-    });
+    return handleError(error.message, 500);
   }
 }
+

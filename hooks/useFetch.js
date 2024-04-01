@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const useFetch = (apiUrl) => {
+const useFetch = (apiUrl, triggerDataFetch) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -20,9 +20,7 @@ const useFetch = (apiUrl) => {
     };
 
     fetchData();
-
-    return () => {};
-  }, [apiUrl]);
+  }, [apiUrl, triggerDataFetch]);
 
   return { data, isLoading, isError };
 };

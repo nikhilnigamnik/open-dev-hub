@@ -20,9 +20,12 @@ const userSlice = createSlice({
     setLogout(state) {
       state.user = null;
     },
+    setAdmin(state, action) {
+      state.admin = action.payload;
+    },
   },
 });
 
-export const { setlogin, setLoginData, setUserData, setLogout } =
+export const { setlogin, setLoginData, setUserData, setLogout, setAdmin } =
   userSlice.actions;
 export default userSlice.reducer;

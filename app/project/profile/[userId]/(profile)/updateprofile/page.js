@@ -21,6 +21,7 @@ const page = ({ params }) => {
 
   const onSubmit = async (data) => {
     if (
+      !data.title &&
       !data.twitter &&
       !data.github &&
       !data.linkedin &&
@@ -52,6 +53,7 @@ const page = ({ params }) => {
     setSkills(skillArray);
   };
 
+  setValue("title", user?.title);
   setValue("twitter", user?.twitter);
   setValue("github", user?.github);
   setValue("linkedin", user?.linkedin);

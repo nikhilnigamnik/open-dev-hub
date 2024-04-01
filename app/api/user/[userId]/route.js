@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { handleError, handleSuccess } from "@/middlewares/responseMessage";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
@@ -58,14 +59,8 @@ export async function DELETE(request, { params: { userId } }) {
       where: { id: userId },
     });
 
-    return NextResponse.json({
-      success: true,
-      messsage: "User Deleted",
-    });
+    return handleSuccess("User deleted successfully", 200);
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      message: "Failed to delete user",
-    });
+    return handleError(error.message, 500);
   }
 }

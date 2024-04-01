@@ -10,7 +10,7 @@ const Page = () => {
   const { data, isLoading } = useFetch(`/api/projects?tags=${tag}`);
   const [searchData, setSearchData] = useState("");
 
-  const filteredData = data?.filter((project) =>
+  const filteredData = data?.data?.filter((project) =>
     project?.title?.toLowerCase().includes(searchData.toLowerCase())
   );
 

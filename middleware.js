@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-  // const user = false;
-  // if (!user) {
-  //   return NextResponse.redirect(new URL("/admin-login", request.url));
-  // }
+  const path = request.nextUrl.pathname;
+
+  const token = request.cookies.get("token");
+
+  if (path === "/admin" && !token) {
+    return NextResponse.redirect(new URL("/admin-login", request.url));
+  }
+
+  if (path === "/admin" && token) {
+    return NextResponse.redirect(new URL("/admin/dashboard", request.url));
+  }
 
   return NextResponse.next();
 }
-
-// export const config = {
-//   matcher: ["/admin"],
-// };
