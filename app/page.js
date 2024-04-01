@@ -18,7 +18,7 @@ const Home = () => {
           Features of the app
         </h3>
 
-        <div className="flex flex-col gap-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-8">
           <div>
             <h4 className="text-gradient text-xl font-semibold">Profile</h4>
             <p className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
@@ -37,13 +37,7 @@ const Home = () => {
             />
           </CardSpotlight>
         </div>
-        <div className="flex flex-col gap-8">
-          <div>
-            <h4 className="text-gradient text-xl font-semibold">Add Project</h4>
-            <p className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-              Add a project to the platform
-            </p>
-          </div>
+        <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-8 ">
           <CardSpotlight hoverEffect>
             <NextImage
               height={"100%"}
@@ -55,8 +49,14 @@ const Home = () => {
               alt={"Banner"}
             />
           </CardSpotlight>
+          <div>
+            <h4 className="text-gradient text-xl font-semibold">Add Project</h4>
+            <p className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+              Add a project to the platform
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-8">
           <div>
             <h4 className="text-gradient text-xl font-semibold">
               Add Social Links
@@ -76,6 +76,27 @@ const Home = () => {
               alt={"Banner"}
             />
           </CardSpotlight>
+        </div>
+        <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-8">
+          <CardSpotlight hoverEffect>
+            <NextImage
+              height={"100%"}
+              className="rounded-md"
+              width={"100%"}
+              src={
+                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711995749/Screenshot_2024-04-01_235139_xwhgra.png"
+              }
+              alt={"Banner"}
+            />
+          </CardSpotlight>
+          <div>
+            <h4 className="text-gradient text-xl font-semibold">
+              See Devs Profile
+            </h4>
+            <p className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+              View other developers profile
+            </p>
+          </div>
         </div>
       </Container>
       <NewsLetter />

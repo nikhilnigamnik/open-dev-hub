@@ -10,7 +10,7 @@ const Page = () => {
   return (
     <div className="md:ml-64  px-4 h-screen">
       <h1 className="text-gradient text-lg">Devs Profiles</h1>
-      <div className="flex flex-wrap gap-4 lg:w-4/6 w-full mt-8">
+      <div className="gap-4 mt-8 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7">
         {isLoading ? (
           <DevProfileLoader />
         ) : (
