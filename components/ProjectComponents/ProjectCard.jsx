@@ -1,13 +1,30 @@
 import React from "react";
 import { CardSpotlight } from "../CardSpotlight";
 import { Badge } from "../ui/badge";
-import Image from "next/image";
 import { CiMedicalClipboard } from "react-icons/ci";
 import { useCopyToClipboard } from "usehooks-ts";
 import { toast } from "sonner";
 import Link from "next/link";
-import { GitIcon } from "../Icon/Icon";
+import {
+  GitIcon,
+  GmailIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TwitterIcon,
+} from "../Icon/Icon";
 import NextImage from "../NextImage";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { Button } from "../ui/button";
+import { Share2 } from "lucide-react";
 
 const ProjectCard = ({ data }) => {
   const [copiedText, copy] = useCopyToClipboard();
@@ -51,12 +68,52 @@ const ProjectCard = ({ data }) => {
                 <Badge key={index}>{tag}</Badge>
               ))}
             </div>
-
-            <CiMedicalClipboard
-              className="cursor-pointer text-border"
-              onClick={() => handleCopy(el?.repoLink)}
-              size={24}
-            />
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Share2
+                  color="gray"
+                  className="cursor-pointer"
+                  size={20}
+                  absoluteStrokeWidth
+                />
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                  <DrawerHeader className={"mt-4"}>
+                    <DrawerTitle>
+                      Share this project with your friends
+                    </DrawerTitle>
+                    <DrawerDescription className="flex flex-col gap-8 mt-4">
+                      <div className="flex justify-between items-center">
+                        <LinkedInIcon />
+                        <InstagramIcon />
+                        <TwitterIcon />
+                        <GmailIcon />
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <input
+                          className="outline-none bg-transparent border border-border px-4 py-1 rounded-lg"
+                          defaultValue={el?.repoLink}
+                        />
+                        <Button
+                          onClick={() => handleCopy(el?.repoLink)}
+                          size="sm"
+                        >
+                          Copy
+                        </Button>
+                      </div>
+                      {/* <div>
+                        <DrawerFooter>
+                          <DrawerClose>
+                            <Button>Close</Button>
+                          </DrawerClose>
+                        </DrawerFooter>
+                      </div> */}
+                    </DrawerDescription>
+                  </DrawerHeader>
+                </div>
+              </DrawerContent>
+            </Drawer>
           </div>
         </CardSpotlight>
       ))}

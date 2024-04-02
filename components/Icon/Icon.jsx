@@ -3,6 +3,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
+import { BiLogoGmail } from "react-icons/bi";
 
 export const GitIcon = ({ className, size }) => {
   return (
@@ -35,6 +36,15 @@ export const TwitterIcon = ({ className, size }) => {
   return (
     <FaTwitter
       className={` w-8 h-8 p-1 text-gray-400 ${className}`}
+      size={size}
+    />
+  );
+};
+
+export const GmailIcon = ({ className, size }) => {
+  return (
+    <BiLogoGmail
+      className={`w-8 h-8 p-1 text-gray-400 ${className}`}
       size={size}
     />
   );

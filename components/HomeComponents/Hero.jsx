@@ -1,6 +1,5 @@
-"use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Container from "../ui/Container";
@@ -8,7 +7,6 @@ import { CardSpotlight } from "../CardSpotlight";
 import NextImage from "../NextImage";
 
 const Hero = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <>
@@ -54,7 +52,7 @@ const Hero = () => {
             height={"100%"}
             width={"100%"}
             src={
-              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png"
+              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712079990/Screenshot_2024-04-02_215837_ptwnvu.jpg"
             }
             alt={"Banner"}
           />

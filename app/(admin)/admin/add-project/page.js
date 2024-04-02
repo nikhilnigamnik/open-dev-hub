@@ -40,7 +40,9 @@ const page = () => {
     <div className="lg:ml-64 p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center ">
         <h1 className="text-2xl font-bold text-gradient">Add Project</h1>
-        <Button onClick={() => router.back()}>Back</Button>
+        <Button size="sm" onClick={() => router.back()}>
+          Back
+        </Button>
       </div>
 
       <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">

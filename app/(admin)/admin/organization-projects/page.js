@@ -33,7 +33,7 @@ const page = () => {
     <div className="lg:ml-64 p-4 flex flex-col gap-5">
       <div className="flex justify-between items-center ">
         <h1 className="text-2xl font-bold text-gradient">Projects</h1>
-        <Button>
+        <Button size={"sm"}>
           <Link href="/admin/add-project">Add Project</Link>
         </Button>
       </div>

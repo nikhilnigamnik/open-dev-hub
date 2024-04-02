@@ -10,10 +10,6 @@ const Page = () => {
   const { data, isLoading } = useFetch(`/api/projects?tags=${tag}`);
   const [searchData, setSearchData] = useState("");
 
-  const filteredData = data?.data?.filter((project) =>
-    project?.title?.toLowerCase().includes(searchData.toLowerCase())
-  );
-
   return (
     <div className="lg:ml-64 text-white">
       <div className="p-4  rounded-lg   flex flex-col gap-4">
@@ -30,7 +26,7 @@ const Page = () => {
               />
               <Button>Search</Button>
             </div>
-            <ProjectCard data={filteredData} />
+            <ProjectCard data={data?.data} />
           </>
         )}
       </div>
