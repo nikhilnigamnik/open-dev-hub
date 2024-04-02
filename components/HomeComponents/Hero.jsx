@@ -52,7 +52,7 @@ const Hero = () => {
             height={"100%"}
             width={"100%"}
             src={
-              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712079990/Screenshot_2024-04-02_215837_ptwnvu.jpg"
+              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081372/Screenshot-2024-04-02-215837_ra7gfx.avif"
             }
             alt={"Banner"}
           />

@@ -31,7 +31,7 @@ const Home = () => {
               height={"100%"}
               width={"100%"}
               src={
-                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712079988/Screenshot_2024-04-02_215918_aep0zu.jpg"
+                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081371/Screenshot-2024-04-02-215918_wzaidz.avif"
               }
               alt={"Banner"}
             />
@@ -44,7 +44,7 @@ const Home = () => {
               className="rounded-md"
               width={"100%"}
               src={
-                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712079996/Screenshot_2024-04-02_215933_hx6s0i.jpg"
+                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081365/Screenshot-2024-04-02-215933_twa0xe.avif"
               }
               alt={"Banner"}
             />
@@ -71,7 +71,7 @@ const Home = () => {
               className="rounded-md"
               width={"100%"}
               src={
-                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712080004/Screenshot_2024-04-02_220720_wl7v58.jpg"
+                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081369/Screenshot-2024-04-02-220720_dtoilz.avif"
               }
               alt={"Banner"}
             />
@@ -84,7 +84,7 @@ const Home = () => {
               className="rounded-md"
               width={"100%"}
               src={
-                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712080437/Screenshot_2024-04-02_232011_xsa3tc.jpg"
+                "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081372/Screenshot-2024-04-02-232011_njf29e.avif"
               }
               alt={"Banner"}
             />
