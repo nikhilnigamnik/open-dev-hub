@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  GitIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from "@/components/Icon/Icon";
+import { GitIcon, LinkedInIcon, TwitterIcon } from "@/components/Icon/Icon";
 import NextImage from "@/components/NextImage";
 import { setLogout } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
@@ -15,9 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 const layout = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  {
-    user ? "" : redirect("/project");
-  }
+
+  user ? "" : redirect("/project");
 
   return (
     <div className="lg:ml-64 text-white px-4 flex flex-col gap-4">

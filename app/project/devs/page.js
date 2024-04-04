@@ -3,6 +3,7 @@
 import DevProfileLoader from "@/components/Loader/DevProfileLoader";
 import NextImage from "@/components/NextImage";
 import useFetch from "@/hooks/useFetch";
+import Link from "next/link";
 import React from "react";
 
 const Page = () => {
@@ -15,7 +16,8 @@ const Page = () => {
           <DevProfileLoader />
         ) : (
           data.map((dev) => (
-            <div
+            <Link
+              href={`/project/devs/${dev?.id}`}
               key={dev?._id}
               className="flex animate_in  flex-col justify-center items-center gap-4"
             >
@@ -27,7 +29,7 @@ const Page = () => {
                 alt={dev.name}
               />
               <p className="text-gradient text-sm">{dev.name}</p>
-            </div>
+            </Link>
           ))
         )}
       </div>
