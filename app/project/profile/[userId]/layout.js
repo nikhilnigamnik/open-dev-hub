@@ -2,6 +2,7 @@
 
 import { GitIcon, LinkedInIcon, TwitterIcon } from "@/components/Icon/Icon";
 import NextImage from "@/components/NextImage";
+import { Badge } from "@/components/ui/badge";
 import { setLogout } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -28,7 +29,6 @@ const layout = ({ children }) => {
           <p className="text-gradient font-semibold text-2xl">{user?.name}</p>
           <p className="text-gradient">{user?.email}</p>
         </div>
-
         <p
           className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm cursor-pointer"
           onClick={() => {
@@ -48,7 +48,6 @@ const layout = ({ children }) => {
               <GitIcon />
             </Link>
           )}
-
           {user?.github && (
             <Link href={user?.linkedin}>
               <LinkedInIcon />
@@ -66,6 +65,11 @@ const layout = ({ children }) => {
               Update Profile
             </p>
           </Link>
+        </div>
+        <div className="flex gap-2 mt-3">
+          {user?.skills.map((skill, index) => (
+            <Badge key={index}>{skill}</Badge>
+          ))}
         </div>
       </div>
 

@@ -48,7 +48,9 @@ const ProjectCard = ({ data }) => {
                 width={30}
                 className="rounded-full"
               />
-              <p>{el?.user?.name}</p>
+              <Link href={`/project/devs/${el?.user?.id}`}>
+                <p>{el?.user?.name}</p>
+              </Link>
             </div>
             <div className="flex items-center gap-4 ">
               <Link href={el?.repoLink}>

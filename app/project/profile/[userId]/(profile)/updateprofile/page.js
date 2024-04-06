@@ -58,6 +58,7 @@ const page = ({ params }) => {
   setValue("github", user?.github);
   setValue("linkedin", user?.linkedin);
   setValue("portfolio", user?.portfolio);
+  setValue("skills", user?.skills);
 
   return (
     <div className="mt-4 animate_in ">
@@ -105,6 +106,7 @@ const page = ({ params }) => {
           <Input
             placeholder="Skills"
             name="skills"
+            id="skills"
             {...register("skills")}
             onChange={handleSkillsChange}
           />

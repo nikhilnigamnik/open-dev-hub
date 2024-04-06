@@ -48,6 +48,11 @@ const page = ({ params: { devId } }) => {
             </Link>
           )}
         </div>
+        <div className="flex gap-2 mt-3">
+          {data?.skills.map((skill, index) => (
+            <Badge key={index}>{skill}</Badge>
+          ))}
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         {isLoading ? (
