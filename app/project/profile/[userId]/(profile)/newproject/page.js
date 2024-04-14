@@ -10,12 +10,15 @@ import { useForm } from "react-hook-form";
 
 const page = ({ params }) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const { handleSubmit, register, reset } = useForm();
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm();
   const [tags, setTags] = useState([]);
 
   const onSubmit = async (data) => {
-    setLoading(true);
     try {
       const tagsArray = data.tags.split(",").map((tag) => tag.trim());
       await axios.post("/api/projects", {
@@ -28,8 +31,6 @@ const page = ({ params }) => {
       router.back();
     } catch (error) {
       toast(error?.response?.data?.message, { type: "error" });
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -51,37 +52,78 @@ const page = ({ params }) => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4 mt-4">
-          <Input placeholder="Title" name="title" {...register("title")} />
+          <Input
+            placeholder="Title"
+            name="title"
+            {...register("title", {
+              required: "Title is Required",
+            })}
+          />
           <Input
             placeholder="Description"
             name="description"
-            {...register("description")}
+            {...register("description", {
+              required: "Description is Required",
+            })}
           />
           <Input
             placeholder="Repository Link"
             name="repoLink"
-            {...register("repoLink")}
+            {...register("repoLink", {
+              required: "Repository Link is Required",
+              pattern: {
+                value: /https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/,
+                message: "Invalid GitHub repository URL",
+              },
+            })}
           />
           <Input
             placeholder="Live Link"
             name="projectLink"
-            {...register("projectLink")}
+            {...register("projectLink", {
+              required: "Project Link is Required",
+            })}
           />
           <Input
             placeholder="Tags"
             name="tags"
-            {...register("tags")}
+            {...register("tags", {
+              required: "Tags is Required",
+            })}
             onChange={handleTagsInputChange}
           />
           <p>
             Note : Please separate tags with comma (,). Example: react, nodejs,
           </p>
+
+          {errors.title && (
+            <span className="text-red-500 text-sm">{errors.title.message}</span>
+          )}
+          {errors.description && (
+            <span className="text-red-500 text-sm">
+              {errors.description.message}
+            </span>
+          )}
+          {errors.repoLink && (
+            <span className="text-red-500 text-sm">
+              {errors.repoLink.message}
+            </span>
+          )}
+          {errors.projectLink && (
+            <span className="text-red-500 text-sm">
+              {errors.projectLink.message}
+            </span>
+          )}
+          {errors.tags && (
+            <span className="text-red-500 text-sm">{errors.tags.message}</span>
+          )}
+
           <div className="flex flex-wrap gap-2">
             {tags.map((tag, index) => (
               <Badge key={index}>{tag}</Badge>
             ))}
           </div>
-          <Button loading={loading} type="submit">
+          <Button loading={isSubmitting} type="submit">
             Save
           </Button>
         </div>

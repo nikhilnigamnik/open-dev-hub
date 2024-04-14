@@ -82,9 +82,6 @@ const ProjectCard = ({ data }) => {
               <DrawerContent>
                 <div className="mx-auto w-full max-w-sm">
                   <DrawerHeader className={"mt-4"}>
-                    <DrawerTitle>
-                      Share this project with your friends
-                    </DrawerTitle>
                     <DrawerDescription className="flex flex-col gap-8 mt-4">
                       <div className="flex justify-between items-center">
                         <LinkedInIcon />
@@ -92,9 +89,9 @@ const ProjectCard = ({ data }) => {
                         <TwitterIcon />
                         <GmailIcon />
                       </div>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center gap-3">
                         <input
-                          className="outline-none bg-transparent border border-border px-4 py-1 rounded-lg"
+                          className="outline-none bg-transparent border border-border px-4 py-1 rounded-lg w-full"
                           defaultValue={el?.repoLink}
                         />
                         <Button
@@ -104,13 +101,6 @@ const ProjectCard = ({ data }) => {
                           Copy
                         </Button>
                       </div>
-                      {/* <div>
-                        <DrawerFooter>
-                          <DrawerClose>
-                            <Button>Close</Button>
-                          </DrawerClose>
-                        </DrawerFooter>
-                      </div> */}
                     </DrawerDescription>
                   </DrawerHeader>
                 </div>

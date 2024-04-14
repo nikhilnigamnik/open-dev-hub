@@ -6,7 +6,7 @@ const layout = ({ children }) => {
   return (
     <div>
       <Navigation />
-      {children}
+      <div className="xl:w-11/12 w-full">{children}</div>
       <BottomNav />
     </div>
   );
