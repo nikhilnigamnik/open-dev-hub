@@ -2,12 +2,16 @@
 import ProjectLoader from "@/components/Loader/ProjectLoader";
 import ProjectCard from "@/components/ProjectComponents/ProjectCard";
 import { Button } from "@/components/ui/button";
-import useFetch from "@/hooks/useFetch";
+import { getProjects } from "@/helper/apis";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 const Page = () => {
-  const [tag, setTag] = useState("");
-  const { data, isLoading } = useFetch(`/api/projects?tags=${tag}`);
+  const { data, isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: getProjects,
+  });
+
   const [searchData, setSearchData] = useState("");
 
   return (

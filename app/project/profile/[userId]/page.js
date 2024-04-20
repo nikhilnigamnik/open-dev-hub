@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "sonner";
+import { useQuery } from "@tanstack/react-query";
 
 const Page = ({ params }) => {
   const {
@@ -29,7 +30,16 @@ const Page = ({ params }) => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
-  const { data, isLoading } = useFetch(`/api/user/${params.userId}`);
+
+  const getUsers = async () => {
+    const res = await axios.get(`/api/user/${params.userId}`);
+    return res.data;
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["dev"],
+    queryFn: getUsers,
+  });
 
   const handleUpdate = async (data) => {
     toast.loading("Updating Project");

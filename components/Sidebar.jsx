@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
+import NextImage from "./NextImage";
 
 const Navigation = () => {
   const user = useSelector((state) => state.user);
@@ -93,7 +94,7 @@ const Navigation = () => {
                         : "text-gradient"
                     }`}
                   >
-                    <Image
+                    <NextImage
                       width={20}
                       height={20}
                       className="rounded-full"

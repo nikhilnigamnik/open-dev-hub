@@ -2,12 +2,17 @@
 
 import DevProfileLoader from "@/components/Loader/DevProfileLoader";
 import NextImage from "@/components/NextImage";
-import useFetch from "@/hooks/useFetch";
+import { getUsers } from "@/helper/apis";
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React from "react";
 
 const Page = () => {
-  const { data, isLoading } = useFetch("/api/user");
+  const { data, isLoading } = useQuery({
+    queryKey: ["devs"],
+    queryFn: getUsers,
+  });
+
   return (
     <div className="md:ml-64  px-4 h-screen">
       <h1 className="text-gradient text-lg">Devs Profiles</h1>
