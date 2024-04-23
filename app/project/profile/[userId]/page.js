@@ -1,17 +1,14 @@
 "use client";
 import { CardSpotlight } from "@/components/CardSpotlight";
-import { EditIcon } from "@/components/Icon/Icon";
+import { DeleteIcon, EditIcon } from "@/components/Icon/Icon";
 import ProjectLoader from "@/components/Loader/ProjectLoader";
 import { Badge } from "@/components/ui/badge";
-import useFetch from "@/hooks/useFetch";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -21,9 +18,11 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "sonner";
-import { useQuery } from "@tanstack/react-query";
+import useFetch from "@/hooks/useFetch";
 
 const Page = ({ params }) => {
+  const [editingProject, setEditingProject] = useState(null);
+  const [triggerDataFetch, setTriggerDataFetch] = useState(false);
   const {
     handleSubmit,
     register,
@@ -31,26 +30,43 @@ const Page = ({ params }) => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const getUsers = async () => {
-    const res = await axios.get(`/api/user/${params.userId}`);
-    return res.data;
-  };
+  const { data, isLoading } = useFetch(
+    `/api/user/${params.userId}`,
+    triggerDataFetch
+  );
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["dev"],
-    queryFn: getUsers,
-  });
+  useEffect(() => {
+    if (editingProject) {
+      reset({
+        title: editingProject.title,
+        description: editingProject.description,
+        repoLink: editingProject.repoLink,
+        projectLink: editingProject.projectLink,
+        tags: editingProject.tags.join(", "),
+      });
+    }
+  }, [editingProject, reset]);
 
-  const handleUpdate = async (data) => {
-    toast.loading("Updating Project");
+  const handleUpdate = async (projectId, data) => {
     try {
       const tagsArray = data.tags.split(",").map((tag) => tag.trim());
-      await axios.put(`/api/projects/${params.userId}`, {
+      await axios.put(`/api/projects/${projectId}`, {
         ...data,
         tags: tagsArray,
       });
       reset();
+      setTriggerDataFetch(!triggerDataFetch);
       toast.success("Project Updated Successfully");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
+  const handleDelete = async (projectId) => {
+    try {
+      await axios.delete(`/api/projects/${projectId}`);
+      setTriggerDataFetch(!triggerDataFetch);
+      toast.success("Project Deleted Successfully");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -71,20 +87,28 @@ const Page = ({ params }) => {
           <ProjectLoader />
         ) : (
           data?.project.map((el) => (
-            <CardSpotlight className={"animate_in "} key={el?._id} hoverEffect>
+            <CardSpotlight className={"animate_in"} key={el?.id} hoverEffect>
               <div className="flex justify-between items-center">
                 <p>{el?.title}</p>
-                <form onSubmit={handleSubmit(handleUpdate)}>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <button variant="outline">
-                        <EditIcon />
-                      </button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
-                      <DialogHeader>
-                        <DialogTitle>Update Project</DialogTitle>
-                      </DialogHeader>
+
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      onClick={() => setEditingProject(el)}
+                      variant="outline"
+                    >
+                      <EditIcon />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Update Project</DialogTitle>
+                    </DialogHeader>
+                    <form
+                      onSubmit={handleSubmit((formData) =>
+                        handleUpdate(el?.id, formData)
+                      )}
+                    >
                       <div className="grid gap-4 py-4">
                         <Input
                           placeholder="Title"
@@ -120,23 +144,23 @@ const Page = ({ params }) => {
                           })}
                         />
                       </div>
-
-                      <Button
-                        onClick={() => toast.loading("Loading.........")}
-                        loading={isSubmitting}
-                        type="submit"
-                      >
+                      <Button loading={isSubmitting} type="submit">
                         Save changes
                       </Button>
-                    </DialogContent>
-                  </Dialog>
-                </form>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               </div>
               <p>{el?.description}</p>
-              <div className="flex gap-3">
-                {el?.tags.map((tag, index) => (
-                  <Badge key={index}>{tag}</Badge>
-                ))}
+              <div className="flex justify-between items-center">
+                <div className="flex gap-3">
+                  {el?.tags.map((tag, index) => (
+                    <Badge key={index}>{tag}</Badge>
+                  ))}
+                </div>
+                <button onClick={() => handleDelete(el?.id)}>
+                  <DeleteIcon />
+                </button>
               </div>
             </CardSpotlight>
           ))

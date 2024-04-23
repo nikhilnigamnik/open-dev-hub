@@ -11,9 +11,9 @@ const Hero = () => {
   return (
     <>
       <div className="flex  animate_in justify-center gap-4 items-center flex-col md:h-[60vh] h-[50vh] max-w-5xl m-auto px-4">
-        <span class="relative group inline-block w-fit mx-auto overflow-hidden rounded-full p-[1px]">
-          <span class="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#71717a_0%,#27272a_50%,#71717a_100%)] animate-spin duration-700 rounded-full group-hover:animate-none"></span>
-          <div class="flex gap-1 h-full group w-full items-center justify-center rounded-full bg-zinc-900 px-3 py-1 text-xs text-zinc-200 backdrop-blur-3xl hover:backdrop-blur-2xl hover:shadow-lg transition-all duration-200 ease-in-out">
+        <span className="relative group inline-block w-fit mx-auto overflow-hidden rounded-full p-[1px]">
+          <span className="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#71717a_0%,#27272a_50%,#71717a_100%)] animate-spin duration-700 rounded-full group-hover:animate-none"></span>
+          <div className="flex gap-1 h-full group w-full items-center justify-center rounded-full bg-zinc-900 px-3 py-1 text-xs text-zinc-200 backdrop-blur-3xl hover:backdrop-blur-2xl hover:shadow-lg transition-all duration-200 ease-in-out">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -24,7 +24,7 @@ const Hero = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              class="lucide lucide-sparkles mr-1 h-3 w-3"
+              className="lucide lucide-sparkles mr-1 h-3 w-3"
             >
               <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
               <path d="M5 3v4"></path>

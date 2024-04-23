@@ -1,37 +1,32 @@
 import React from "react";
 import { CardSpotlight } from "../CardSpotlight";
 import { Badge } from "../ui/badge";
-import { CiMedicalClipboard } from "react-icons/ci";
-import { useCopyToClipboard } from "usehooks-ts";
 import { toast } from "sonner";
 import Link from "next/link";
-import {
-  GitIcon,
-  GmailIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from "../Icon/Icon";
 import NextImage from "../NextImage";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { Share2 } from "lucide-react";
+import {
+  EmailIcon,
+  InstapaperIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  XIcon,
+} from "react-share";
+import { GitIcon } from "../Icon/Icon";
 
 const ProjectCard = ({ data }) => {
-  const [copiedText, copy] = useCopyToClipboard();
-
   const handleCopy = (text) => {
-    copy(text);
-    toast("Copied : " + copiedText, {
+    navigator.clipboard.writeText(text);
+    toast("Copied : " + text, {
       type: "success",
     });
   };
@@ -84,10 +79,14 @@ const ProjectCard = ({ data }) => {
                   <DrawerHeader className={"mt-4"}>
                     <DrawerDescription className="flex flex-col gap-8 mt-4">
                       <div className="flex justify-between items-center">
-                        <LinkedInIcon />
-                        <InstagramIcon />
-                        <TwitterIcon />
-                        <GmailIcon />
+                        <LinkedinIcon
+                          round={true}
+                          size={35}
+                          url={el?.repoLink}
+                        />
+                        <WhatsappIcon round={true} size={35} />
+                        <EmailIcon round={true} size={35} />
+                        <XIcon round={true} size={35} />
                       </div>
                       <div className="flex justify-between items-center gap-3">
                         <input

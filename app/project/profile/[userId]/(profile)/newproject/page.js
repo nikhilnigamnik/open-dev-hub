@@ -95,34 +95,13 @@ const page = ({ params }) => {
           <p>
             Note : Please separate tags with comma (,). Example: react, nodejs,
           </p>
-
-          {errors.title && (
-            <span className="text-red-500 text-sm">{errors.title.message}</span>
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <Badge key={index}>{tag}</Badge>
+              ))}
+            </div>
           )}
-          {errors.description && (
-            <span className="text-red-500 text-sm">
-              {errors.description.message}
-            </span>
-          )}
-          {errors.repoLink && (
-            <span className="text-red-500 text-sm">
-              {errors.repoLink.message}
-            </span>
-          )}
-          {errors.projectLink && (
-            <span className="text-red-500 text-sm">
-              {errors.projectLink.message}
-            </span>
-          )}
-          {errors.tags && (
-            <span className="text-red-500 text-sm">{errors.tags.message}</span>
-          )}
-
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <Badge key={index}>{tag}</Badge>
-            ))}
-          </div>
           <Button loading={isSubmitting} type="submit">
             Save
           </Button>

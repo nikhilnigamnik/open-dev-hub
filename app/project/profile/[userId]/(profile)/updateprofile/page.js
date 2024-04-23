@@ -15,7 +15,7 @@ const page = ({ params }) => {
   const router = useRouter();
   const [skills, setSkills] = useState([]);
 
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.persistedReducer.user);
   const [loading, setLoading] = useState(false);
   const { handleSubmit, register, setValue, reset } = useForm();
 
@@ -25,22 +25,22 @@ const page = ({ params }) => {
       !data.twitter &&
       !data.github &&
       !data.linkedin &&
-      !data.portfolio &&
-      !data.skills
+      !data.portfolio
     )
       return toast("Please fill at least one field", { type: "error" });
-    const skillsArray = data.skills.split(",").map((skill) => skill.trim());
+
+    // const skillsArray = data.skills.split(",").map((skill) => skill.trim());
 
     try {
       setLoading(true);
       const res = await axios.put(`/api/user/${params.userId}`, {
         ...data,
-        skills: skillsArray,
+        // skills: skillsArray,
       });
       dispatch(setLoginData(res.data));
       reset();
       toast(" Profile Updated ", { type: "success" });
-      router.back();
+      // router.back();
     } catch (error) {
       toast("Something went wrong", { type: "error" });
     } finally {

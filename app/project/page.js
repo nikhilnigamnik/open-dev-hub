@@ -1,6 +1,6 @@
 "use client";
 import ProjectLoader from "@/components/Loader/ProjectLoader";
-import ProjectCard from "@/components/ProjectComponents/ProjectCard";
+import ProjectCard from "@/components/project-components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { getProjects } from "@/helper/apis";
 import { useQuery } from "@tanstack/react-query";

@@ -1,13 +1,9 @@
-import Link from "next/link";
-import React from "react";
+import Welcome from "@/markdown/welcome.mdx";
 
 const page = () => {
-  const blog = "4841fd15b5dfb";
   return (
-    <div>
-      <Link href={`/blog/${blog}`}>
-        <p>page</p>
-      </Link>
+    <div className="max-w-4xl mx-auto px-4">
+      <Welcome />
     </div>
   );
 };

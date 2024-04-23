@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 const layout = ({ children }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
-  
+  const { user } = useSelector((state) => state.persistedReducer.user);
+
   user ? "" : redirect("/project");
 
   return (

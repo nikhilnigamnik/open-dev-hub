@@ -27,13 +27,15 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   const { userId } = params;
-  const { twitter, github, linkedin, portfolio, skills } = await request.json();
+  const { twitter, github, linkedin, portfolio, skills, title } =
+    await request.json();
   try {
     const res = await prisma.users.update({
       where: {
         id: userId,
       },
       data: {
+        title,
         twitter,
         github,
         skills,

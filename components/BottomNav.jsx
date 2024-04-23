@@ -8,7 +8,7 @@ import NextImage from "./NextImage";
 
 const BottomNav = () => {
   const pathname = usePathname();
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.persistedReducer.user);
 
   return (
     <div className="fixed block lg:hidden z-50  left-2 right-2   rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15">

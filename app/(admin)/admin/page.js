@@ -6,7 +6,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const page = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.persistedReducer.user);
   const pathname = usePathname();
   return (
     <>

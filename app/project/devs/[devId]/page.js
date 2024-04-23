@@ -6,21 +6,11 @@ import ProjectLoader from "@/components/Loader/ProjectLoader";
 import NextImage from "@/components/NextImage";
 import { Badge } from "@/components/ui/badge";
 import useFetch from "@/hooks/useFetch";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import Link from "next/link";
 import React from "react";
 
 const page = ({ params: { devId } }) => {
-  const getUsers = async () => {
-    const res = await axios.get(`/api/user/${devId}`);
-    return res.data;
-  };
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["dev"],
-    queryFn: getUsers,
-  });
+  const { data, isLoading } = useFetch(`/api/user/${devId}`, devId);
 
   return (
     <div className="lg:ml-64 text-white px-4 flex flex-col gap-4">

@@ -1,7 +1,7 @@
 import { CardSpotlight } from "@/components/CardSpotlight";
-import Hero from "@/components/HomeComponents/Hero";
-import NewsLetter from "@/components/HomeComponents/NewsLetter";
 import NextImage from "@/components/NextImage";
+import Hero from "@/components/home-components/Hero";
+import NewsLetter from "@/components/home-components/NewsLetter";
 import Container from "@/components/ui/Container";
 
 import React from "react";
