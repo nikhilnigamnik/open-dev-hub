@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { setLogout } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,17 +18,11 @@ const layout = ({ children }) => {
 
   const handleLogout = async () => {
     setLoading(true);
-    try {
-      await signOut("email");
-      signOut("google");
-      signOut("github");
-      dispatch(setLogout());
-      router.push("/project");
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
+    signOut("google");
+    signOut("github");
+    dispatch(setLogout());
+    router.push("/project");
+    setLoading(false);
   };
 
   useEffect(() => {
