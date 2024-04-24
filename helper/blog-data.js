@@ -1,13 +1,13 @@
 export const blogRedirect = [
   {
     id: 1,
-    title: "JavaScript Array Methods Master Guide",
-    link: "master-javascript-array",
+    title: "Beginner's Guide to React Query",
+    link: "beginners-guide-to-react-query",
     author: "Nikhil Nigam",
     content:
-      "Learn JavaScript array methods like map, filter, reduce, and more. Master JavaScript array methods with examples. JavaScript array methods are essential for every JavaScript developer.",
+      "React Query is a library that helps you fetch and manage data in your React applications. It provides a set of hooks for fetching, caching, and updating data in your application. In this article, we will learn how to use React Query to fetch data from an API and display it in a React component.",
     publishDate: "April 24, 2023",
-    tags: ["JavaScript", "Array"],
+    tags: ["React", "React Query"],
   },
   {
     id: 2,

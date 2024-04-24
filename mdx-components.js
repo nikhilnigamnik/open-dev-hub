@@ -42,14 +42,12 @@ export function useMDXComponents(components) {
     ),
     li: ({ children }) => <li className="ml-2 text-gray-400">{children}</li>,
     pre: ({ children }) => (
-      <div className="p-4 my-4 rounded-xl text-gray-400 border border-border bg-secondary">
+      <div className="p-4 my-4 rounded-xl text-gray-400 border border-border bg-secondary  overflow-x-auto">
         <pre className="rounded-xl">{children}</pre>
       </div>
     ),
     code: ({ children }) => (
-      <code className="text-sm p-1  whitespace-pre-line rounded-lg ">
-        {children}
-      </code>
+      <code  className="text-sm p-1 rounded-lg ">{children}</code>
     ),
     img: ({ src, alt, width, height }) => (
       <div className="border border-border p-2 bg-secondary rounded-xl my-4">
