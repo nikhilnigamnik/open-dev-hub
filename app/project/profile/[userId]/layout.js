@@ -6,14 +6,36 @@ import { Badge } from "@/components/ui/badge";
 import { setLogout } from "@/redux/slices/userSlice";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import {  useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const layout = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const router = useRouter();
   const { user } = useSelector((state) => state.persistedReducer.user);
 
-  user ? "" : redirect("/project");
+  const handleLogout = async () => {
+    setLoading(true);
+    try {
+      await signOut("email");
+      signOut("google");
+      signOut("github");
+      dispatch(setLogout());
+      router.push("/project");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/project");
+    }
+  }, [user, router]);
 
   return (
     <div className="lg:ml-64 text-white px-4 flex flex-col gap-4">
@@ -31,13 +53,9 @@ const layout = ({ children }) => {
         </div>
         <p
           className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm cursor-pointer"
-          onClick={() => {
-            dispatch(setLogout());
-            signOut("google");
-            signOut("github");
-          }}
+          onClick={handleLogout}
         >
-          Logout
+          {loading ? "Logout" : "Logging Out..."}
         </p>
       </div>
       <h2 className="text-gradient text-lg font-semibold">Social Links</h2>
@@ -67,7 +85,7 @@ const layout = ({ children }) => {
           </Link>
         </div>
         <div className="flex gap-2 mt-3">
-          {user?.skills.map((skill, index) => (
+          {user?.skills?.map((skill, index) => (
             <Badge key={index}>{skill}</Badge>
           ))}
         </div>

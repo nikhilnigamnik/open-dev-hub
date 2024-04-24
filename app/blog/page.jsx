@@ -10,7 +10,7 @@ const page = () => {
       {blogRedirect.map((blog) => (
         <div
           key={blog?.id}
-          className="rounded-lg mt-8 border border-border bg-secondary"
+          className="rounded-xl mt-8 border border-border bg-secondary"
         >
           <div className="px-6 py-5">
             <div className="flex items-center justify-between mb-4">

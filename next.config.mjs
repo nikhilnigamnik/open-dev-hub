@@ -12,11 +12,6 @@ const nextConfig = {
       "avatars.githubusercontent.com",
     ],
   },
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
 };
 
 const withMDX = createMDX({});

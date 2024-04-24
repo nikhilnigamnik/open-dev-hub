@@ -73,97 +73,99 @@ const Page = ({ params }) => {
   };
 
   return (
-    <div className="mt-4">
-      <div className="flex justify-between items-center">
+    <>
+      <div className="flex justify-between items-center mt-4">
         <h1 className="text-gradient text-lg font-semibold">Projects</h1>
         <Link href={`${params?.userId}/newproject`}>
           <p className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm">
             Add Project
           </p>
         </Link>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      </div> 
+      <div className="flex flex-col gap-4 ">
         {isLoading ? (
           <ProjectLoader />
         ) : (
-          data?.project.map((el) => (
-            <CardSpotlight className={"animate_in"} key={el?.id} hoverEffect>
-              <div className="flex justify-between items-center">
-                <p>{el?.title}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data?.project.map((el) => (
+              <CardSpotlight className={"animate_in"} key={el?.id} hoverEffect>
+                <div className="flex justify-between items-center">
+                  <p>{el?.title}</p>
 
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <button
-                      onClick={() => setEditingProject(el)}
-                      variant="outline"
-                    >
-                      <EditIcon />
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle>Update Project</DialogTitle>
-                    </DialogHeader>
-                    <form
-                      onSubmit={handleSubmit((formData) =>
-                        handleUpdate(el?.id, formData)
-                      )}
-                    >
-                      <div className="grid gap-4 py-4">
-                        <Input
-                          placeholder="Title"
-                          name="title"
-                          defaultValue={el?.title}
-                          {...register("title")}
-                        />
-                        <Input
-                          placeholder="Description"
-                          name="description"
-                          defaultValue={el?.description}
-                          {...register("description")}
-                        />
-                        <Input
-                          placeholder="Repository Link"
-                          name="repoLink"
-                          defaultValue={el?.repoLink}
-                          {...register("repoLink")}
-                        />
-                        <Input
-                          placeholder="Project Link"
-                          name="projectLink"
-                          defaultValue={el?.projectLink}
-                          {...register("projectLink")}
-                        />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button
+                        onClick={() => setEditingProject(el)}
+                        variant="outline"
+                      >
+                        <EditIcon />
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Update Project</DialogTitle>
+                      </DialogHeader>
+                      <form
+                        onSubmit={handleSubmit((formData) =>
+                          handleUpdate(el?.id, formData)
+                        )}
+                      >
+                        <div className="grid gap-4 py-4">
+                          <Input
+                            placeholder="Title"
+                            name="title"
+                            defaultValue={el?.title}
+                            {...register("title")}
+                          />
+                          <Input
+                            placeholder="Description"
+                            name="description"
+                            defaultValue={el?.description}
+                            {...register("description")}
+                          />
+                          <Input
+                            placeholder="Repository Link"
+                            name="repoLink"
+                            defaultValue={el?.repoLink}
+                            {...register("repoLink")}
+                          />
+                          <Input
+                            placeholder="Project Link"
+                            name="projectLink"
+                            defaultValue={el?.projectLink}
+                            {...register("projectLink")}
+                          />
 
-                        <Input
-                          placeholder="Tags"
-                          name="tags"
-                          defaultValue={el?.tags.join(", ")}
-                          {...register("tags", {
-                            required: "Tags is Required",
-                          })}
-                        />
-                      </div>
-                      <Button loading={isSubmitting} type="submit">
-                        Save changes
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
-              </div>
-              <p>{el?.description}</p>
-              <div className="flex justify-between items-center">
-                <div className="flex gap-3">
-                  {el?.tags.map((tag, index) => (
-                    <Badge key={index}>{tag}</Badge>
-                  ))}
+                          <Input
+                            placeholder="Tags"
+                            name="tags"
+                            defaultValue={el?.tags.join(", ")}
+                            {...register("tags", {
+                              required: "Tags is Required",
+                            })}
+                          />
+                        </div>
+                        <Button loading={isSubmitting} type="submit">
+                          Save changes
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </div>
-                <button onClick={() => handleDelete(el?.id)}>
-                  <DeleteIcon />
-                </button>
-              </div>
-            </CardSpotlight>
-          ))
+                <p>{el?.description}</p>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-3">
+                    {el?.tags.map((tag, index) => (
+                      <Badge key={index}>{tag}</Badge>
+                    ))}
+                  </div>
+                  <button onClick={() => handleDelete(el?.id)}>
+                    <DeleteIcon />
+                  </button>
+                </div>
+              </CardSpotlight>
+            ))}
+          </div>
         )}
         {data?.project.length === 0 && (
           <p className="border border-border bg-secondary rounded-xl px-3 py-1 text-sm ">
@@ -171,7 +173,7 @@ const Page = ({ params }) => {
           </p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
