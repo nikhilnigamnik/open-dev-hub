@@ -79,7 +79,7 @@ const BottomNav = () => {
         </Link>
 
         <Link
-          href={"/project/community"}
+          href={"/blog"}
           className="inline-flex flex-col items-center justify-center px-5 group"
         >
           <svg

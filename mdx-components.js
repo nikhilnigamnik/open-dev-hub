@@ -1,7 +1,10 @@
+import Link from "next/link";
+import NextImage from "./components/NextImage";
+
 export function useMDXComponents(components) {
   return {
     h1: ({ children }) => (
-      <h1 className="md:text-4xl text-3xl font-bold my-4 text-gray-200">
+      <h1 className="md:text-4xl text-3xl font-bold my-8 text-gray-200 text-center">
         {children}
       </h1>
     ),
@@ -29,32 +32,40 @@ export function useMDXComponents(components) {
       <h6 className="text-md my-1 text-gray-400">{children}</h6>
     ),
     p: ({ children }) => (
-      <p className="text-base my-2 text-gray-400">{children}</p>
+      <p className="text-base my-4 text-gray-400">{children}</p>
     ),
     ul: ({ children }) => (
-      <ul className="list-disc pl-5 my-2 text-gray-400">{children}</ul>
+      <ul className="list-disc pl-5 my-4 text-gray-400">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="list-decimal pl-5 my-4 text-gray-400">{children}</ol>
     ),
     li: ({ children }) => <li className="ml-2 text-gray-400">{children}</li>,
     pre: ({ children }) => (
-      <div className="p-2 my-4 rounded-xl text-gray-400 border border-border ">
-        <pre className="p-4 bg-secondary rounded-xl">{children}</pre>
+      <div className="p-4 my-4 rounded-xl text-gray-400 border border-border bg-secondary">
+        <pre className="rounded-xl">{children}</pre>
       </div>
     ),
     code: ({ children }) => (
-      <code className="text-sm p-1 whitespace-pre-line bg-secondary rounded-lg">
+      <code className="text-sm p-1  whitespace-pre-line rounded-lg ">
         {children}
       </code>
     ),
     img: ({ src, alt, width, height }) => (
-      <div className="border border-border rounded-xl">
-        <img
+      <div className="border border-border p-2 bg-secondary rounded-xl my-4">
+        <NextImage
           src={src}
           alt={alt}
           width={width}
           height={height}
-          className="rounded-xl shadow-lg w-full p-2 "
+          className="rounded-xl"
         />
       </div>
+    ),
+    a: ({ children, href }) => (
+      <Link className="underline my-4" href={href}>
+        {children}
+      </Link>
     ),
   };
 }
