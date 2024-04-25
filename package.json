@@ -33,7 +33,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "input-otp": "^1.1.0",
-    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.363.0",
     "mongodb": "^6.5.0",
@@ -54,7 +53,8 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

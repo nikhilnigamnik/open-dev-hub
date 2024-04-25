@@ -4,10 +4,11 @@ import { GitIcon, LinkedInIcon, TwitterIcon } from "@/components/Icon/Icon";
 import NextImage from "@/components/NextImage";
 import { Badge } from "@/components/ui/badge";
 import { setLogout } from "@/redux/slices/userSlice";
+import useUserStore from "@/zustand/useUserStore";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const layout = ({ children }) => {
@@ -15,21 +16,15 @@ const layout = ({ children }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { user } = useSelector((state) => state.persistedReducer.user);
+  const { logout } = useUserStore();
 
-  const handleLogout = async () => {
-    setLoading(true);
+  const handleLogout = () => {
     signOut("google");
     signOut("github");
+    logout();
     dispatch(setLogout());
     router.push("/project");
-    setLoading(false);
   };
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/project");
-    }
-  }, [user, router]);
 
   return (
     <div className="lg:ml-64 text-white px-4 flex flex-col gap-4">

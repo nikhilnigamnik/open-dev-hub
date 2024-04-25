@@ -3,7 +3,6 @@
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { setAdmin } from "@/redux/slices/userSlice";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
@@ -24,7 +23,6 @@ const page = () => {
       const res = await axios.post("/api/admin/admin-login", data);
       toast("Login Successful", { type: "success" });
       reset();
-      dispatch(setAdmin(res?.data?.data));
 
       router.push("/admin/dashboard");
     } catch (error) {

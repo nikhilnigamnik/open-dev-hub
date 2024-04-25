@@ -3,10 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { useSelector } from "react-redux";
 
 const page = () => {
-  const user = useSelector((state) => state.persistedReducer.user);
   const pathname = usePathname();
   return (
     <>
@@ -82,7 +80,7 @@ const page = () => {
               </Link>
             </li>
 
-            {user?.user ? (
+            {/* {user?.user ? (
               <>
                 <li>
                   <Link
@@ -115,7 +113,7 @@ const page = () => {
                   Login
                 </Link>
               </li>
-            )}
+            )} */}
           </ul>
         </div>
       </aside>

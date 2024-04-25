@@ -12,8 +12,6 @@ const Page = () => {
     queryFn: getProjects,
   });
 
-  console.log(isError);
-
   const [searchData, setSearchData] = useState("");
 
   return (

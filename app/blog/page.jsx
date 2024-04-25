@@ -20,13 +20,13 @@ const page = () => {
               <p className="text-sm text-gray-400">{blog?.publishDate}</p>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-gray-300">
-              <Link href={`/blog/${blog.link}`}>{blog.title}</Link>
+              <Link href={`/blog/${blog?.link}`}>{blog?.title}</Link>
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              {blog.content.slice(0, 400)}...
+              {blog?.content?.slice(0, 400)}...
             </p>
             <div className="flex flex-wrap gap-2">
-              {blog.tags.map((tag, i) => (
+              {blog?.tags?.map((tag, i) => (
                 <Badge key={i}>{tag}</Badge>
               ))}
             </div>

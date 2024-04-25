@@ -10,14 +10,12 @@ const Home = () => {
   return (
     <main>
       <Hero />
-
       <Container
         className={"flex justify-between flex-col gap-20 mt-10 animate_in"}
       >
         <h3 className="text-gradient font-semibold text-3xl text-center">
           Features of the app
         </h3>
-
         <div className="grid lg:grid-cols-2 grid-cols-1 justify-between items-center gap-8">
           <div>
             <h4 className="text-gradient text-xl font-semibold">Profile</h4>
@@ -99,7 +97,7 @@ const Home = () => {
           </div>
         </div>
       </Container>
-      <NewsLetter />
+      <NewsLetter/>
     </main>
   );
 };

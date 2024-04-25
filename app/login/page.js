@@ -1,20 +1,31 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import { setLoginData, setlogin } from "@/redux/slices/userSlice";
-import { signIn, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import React from "react";
+import { setLoginData } from "@/redux/slices/userSlice";
+import useUserStore from "@/zustand/useUserStore";
+import { getSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const page = () => {
+  const { setUser } = useUserStore();
   const dispatch = useDispatch();
-  const session = useSession();
-  dispatch(setLoginData(session?.data?.user));
-  if (session.status === "authenticated") {
-    dispatch(setlogin());
-    redirect("/project");
-  }
+  const router = useRouter();
+
+  const getUserSession = async () => {
+    const session = await getSession();
+    setUser(session?.user);
+    dispatch(setLoginData(session?.user));
+    if (session) {
+      router.push("/project");
+    }
+  };
+
+  useEffect(() => {
+    getUserSession();
+  }, []);
+
   return (
     <Container
       className={"py-20 h-[60vh] flex justify-center items-center flex-col"}

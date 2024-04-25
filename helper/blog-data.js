@@ -19,4 +19,14 @@ export const blogRedirect = [
     publishDate: "April 24, 2023",
     tags: ["React", "Recoil"],
   },
+  {
+    id: 3,
+    title: "Zustand - A Simple and Fast State Management",
+    link: "zustand-state-management-for-react",
+    author: "Nikhil Nigam",
+    content:
+      "Zustand is a simple and fast state management library for React. It provides a way to manage global state in your React applications without the need for a complex setup. In this article, we will learn how to use Zustand to manage state in a React application.",
+    publishDate: "April 25, 2023",
+    tags: ["React", "Zustand"],
+  },
 ];

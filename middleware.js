@@ -1,17 +1,13 @@
+import { getSession } from "next-auth/react";
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
+  const session = getSession();
   const path = request.nextUrl.pathname;
 
-  const token = request.cookies.get("token");
-
-  if (path === "/admin" && !token) {
-    return NextResponse.redirect(new URL("/admin-login", request.url));
-  }
-
-  if (path === "/admin" && token) {
-    return NextResponse.redirect(new URL("/admin/dashboard", request.url));
-  }
+  // if (path === "/login" && session) {
+  //   return NextResponse.redirect(new URL("/project", request.url));
+  // }
 
   return NextResponse.next();
 }
