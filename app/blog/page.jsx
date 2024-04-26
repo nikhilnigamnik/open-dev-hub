@@ -4,13 +4,12 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <section className=" animate_in ">
+    <section className=" animate_in  flex flex-col gap-4">
       <h1 className="text-gradient text-lg">Blogs</h1>
-
       {blogRedirect.map((blog) => (
         <div
           key={blog?.id}
-          className="rounded-xl mt-8 border border-border bg-secondary"
+          className="rounded-xl border border-border bg-secondary"
         >
           <div className="px-6 py-5">
             <div className="flex items-center justify-between mb-4">

@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "@/components/ui/sonner";
 import GlobalProvider from "@/providers/GlobalProvider";
 import Script from "next/script";
+import BottomNav from "@/components/BottomNav";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -35,8 +36,8 @@ export default function RootLayout({ children }) {
         <GlobalProvider>
           <div className="background"></div>
           <NavBar />
-          {children}
-          <Footer />
+          <main className="mb-20">{children}</main>
+          <BottomNav />
         </GlobalProvider>
         <Toaster />
         <Analytics />

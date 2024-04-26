@@ -1,42 +1,27 @@
-"use client";
-
-import DevProfileLoader from "@/components/Loader/DevProfileLoader";
 import NextImage from "@/components/NextImage";
-import { getUsers } from "@/helper/apis";
-import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
+import { getDevs } from "@/lib/devs";
 import React from "react";
 
-const Page = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["devs"],
-    queryFn: getUsers,
-  });
-
+const Page = async () => {
+  const data = await getDevs();
   return (
-    <div className="md:ml-64  px-4 h-screen">
+    <div className="max-w-5xl mx-auto p-4">
       <h1 className="text-gradient text-lg">Devs Profiles</h1>
       <div className="gap-4 mt-8 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7">
-        {isLoading ? (
-          <DevProfileLoader />
-        ) : (
-          data.map((dev) => (
-            <Link
-              href={`/project/devs/${dev?.id}`}
-              key={dev?._id}
-              className="flex animate_in  flex-col justify-center items-center gap-4"
-            >
-              <NextImage
-                src={dev.image}
-                width={60}
-                height={60}
-                className="rounded-full"
-                alt={dev.name}
-              />
-              <p className="text-gradient text-sm">{dev.name}</p>
-            </Link>
-          ))
-        )}
+        {data.map((dev) => (
+          <div
+            key={dev?._id}
+            className="flex animate_in  flex-col justify-center items-center gap-4"
+          >
+            <NextImage
+              src={dev.image}
+              width={60}
+              height={60}
+              className="rounded-full"
+              alt={dev.name}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

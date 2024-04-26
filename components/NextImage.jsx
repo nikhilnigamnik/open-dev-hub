@@ -1,27 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const NextImage = ({ height, width, src, alt, className }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
-    <div
-      style={{
-        filter: imageLoaded ? "none" : "blur(20px)",
-        transition: "filter 0.5s ease",
-      }}
-    >
-      <img
-        loading="lazy"
-        height={height || "100%"}
-        className={className || "rounded-md"}
-        width={width || "100%"}
-        src={src}
-        alt={alt}
-        onLoad={() => setImageLoaded(true)}
-      />
-    </div>
+    <LazyLoadImage
+      effect="blur"
+      height={height}
+      className={className || "rounded-md"}
+      width={width}
+      src={src}
+      alt={alt}
+    />
   );
 };
 

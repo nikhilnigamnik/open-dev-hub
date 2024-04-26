@@ -26,6 +26,7 @@ model users {
   portfolio String?
   project   projects[]
   skill     skill[]
+  Project   Project[]
 }
 
 model skill {
@@ -74,4 +75,22 @@ model newsletter {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String?
+  slug        String?  @unique
+  verified    Boolean? @default(false)
+  logo        String?
+  description String?
+  language    String?
+  topics      String[]
+  stars       Int?
+  link        String?
+  userId      String?  @db.ObjectId
+  user        users?   @relation(fields: [userId], references: [id])
+  repo        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

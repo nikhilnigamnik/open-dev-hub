@@ -1,24 +1,20 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import { setLoginData } from "@/redux/slices/userSlice";
 import useUserStore from "@/zustand/useUserStore";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 const page = () => {
   const { setUser } = useUserStore();
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const getUserSession = async () => {
     const session = await getSession();
     setUser(session?.user);
-    dispatch(setLoginData(session?.user));
     if (session) {
-      router.push("/project");
+      router.push("/");
     }
   };
 
