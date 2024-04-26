@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import NextImage from "./NextImage";
 import { BookOpen, CirclePlus, Home, User, UsersRound } from "lucide-react";
 
 const BottomNav = () => {

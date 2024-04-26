@@ -1,0 +1,17 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/api/newsletter/route": "app/api/newsletter/route.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/devs/page": "app/devs/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/getdata/page": "app/getdata/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/project/[projectId]/page": "app/project/[projectId]/page.js",
+  "/blog/blog-content/page": "app/blog/blog-content/page.js",
+  "/blog/beginners-guide-to-react-query/page": "app/blog/beginners-guide-to-react-query/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/blog/master-javascript-array/page": "app/blog/master-javascript-array/page.js",
+  "/blog/recoil-a-new-approach-to-manage-state/page": "app/blog/recoil-a-new-approach-to-manage-state/page.js",
+  "/blog/zustand-state-management-for-react/page": "app/blog/zustand-state-management-for-react/page.js"
+}
