@@ -1,16 +1,11 @@
 import ProjectDetails from "@/components/layout/project-details";
 import { getDetailsRepo } from "@/lib/github";
-
-import prisma from "@/lib/prisma";
+import { getProjects } from "@/lib/project";
 import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function ({ params }) {
-  const project = await prisma.project.findUnique({
-    where: {
-      slug: params.projectId,
-    },
-  });
+  const project = await getProjects({ slug: params.projectId });
 
   if (!project) {
     notFound();
