@@ -9,6 +9,7 @@ import { submitProject } from "@/lib/actions/submit-project";
 import { useRouter } from "next/navigation";
 import { useFormState, useFormStatus } from "react-dom";
 import { toast } from "sonner";
+import useUserStore from "@/zustand/useUserStore";
 
 const initialState = {
   error: null,
@@ -16,6 +17,10 @@ const initialState = {
 
 export default function AddProject() {
   const { openProject, closeProject, isProject } = useProjectModal();
+  const { user } = useUserStore();
+
+  const userId = user?.data?.user?.id;
+  console.log(userId);
 
   const [state, formAction] = useFormState(submitProject, initialState);
 
@@ -55,6 +60,13 @@ export default function AddProject() {
                 </p>
               )}
             </label>
+            <label className="hidden" htmlFor="title">
+              <span className="text-sm font-medium ">Title</span>
+              <div className="relative mt-1">
+                <Input name="userId" id="userId" value={userId} />
+              </div>
+            </label>
+
             <FormButton />
           </form>
         </div>

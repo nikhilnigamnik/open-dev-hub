@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { CardSpotlight } from "../CardSpotlight";
 import NextImage from "../NextImage";
-import { Star } from "lucide-react";
+import { BadgeCheck, BadgeCheckIcon, Star } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 export default async function ProjectCard({ data }) {
   return (
     <div className="flex animate_in  flex-col gap-4">
       {data.map((el) => (
-        <CardSpotlight key={el?.id} hoverEffect>
+        <CardSpotlight className={"p-4"} key={el?.id} hoverEffect>
           <div className="flex flex-col gap-2" href={`/project/${el?.slug}`}>
             <div className="flex items-center gap-4 justify-between">
               <div className="flex items-center gap-4 ">
@@ -24,6 +24,7 @@ export default async function ProjectCard({ data }) {
                     {el?.name}
                   </p>
                 </Link>
+                {el?.verified && <BadgeCheck color="#6b7280" size={20}  />}
               </div>
               <Badge>
                 <a

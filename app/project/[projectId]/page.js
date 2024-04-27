@@ -1,8 +1,13 @@
 import ProjectDetails from "@/components/layout/project-details";
 import { getDetailsRepo } from "@/lib/github";
 import { getProjects } from "@/lib/project";
-import { notFound } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import React from "react";
+
+export async function generateMeta() {
+  const searchParams = useSearchParams();
+  console.log(searchParams);
+}
 
 export default async function ({ params }) {
   const project = await getProjects({ slug: params.projectId });

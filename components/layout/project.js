@@ -5,8 +5,7 @@ const Project = async () => {
   const data = await prisma.project.findMany({});
 
   return (
-    <div className="p-4 rounded-lg flex flex-col gap-4 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-bold text-gradient">Projects</h1>
+    <div className="p-4 rounded-lg max-w-5xl mx-auto">
       <ProjectCard data={data} />
     </div>
   );

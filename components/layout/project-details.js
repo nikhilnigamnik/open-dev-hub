@@ -1,36 +1,40 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Star } from "lucide-react";
+import { BadgeCheck, Star } from "lucide-react";
 import NextImage from "../NextImage";
+import { LinkButton } from "../ui/link-button";
+import { Badge } from "../ui/badge";
+import Avatar from "../Avatar";
 
 export default async function ProjectDetails({ project, data }) {
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">
-      <div className="flex items-start gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center">
         <NextImage className={"w-28 h-28 rounded-full"} src={project?.logo} />
         <div className="flex-1 space-y-2">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold capitalize">{project?.name}</h1>
-            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold capitalize">{project?.name}</h1>
+              {project?.verified && <BadgeCheck color="#6b7280" size={20} />}
+            </div>
+            <Badge className="flex items-center gap-2">
               <Star className="h-4 w-4 text-gray-200" />
               <span>{project?.stars.toLocaleString() || 0}</span>
-            </div>
+            </Badge>
           </div>
-          <p className="text-gray-500 dark:text-gray-400">
-            {project?.description}
-          </p>
+          <p className="text-gray-400 text-sm">{project?.description}</p>
         </div>
       </div>
       <div className="flex gap-2">
         <a href={project?.repo} target="_blank">
-          <Button>View on GitHub</Button>
+          <LinkButton>Github</LinkButton>
         </a>
         <a href={project?.link} target="_blank">
-          <Button>Live Demo</Button>
+          <LinkButton>Website</LinkButton>
         </a>
       </div>
+
       <Separator />
+
       <div>
         <h2 className="text-lg font-medium mb-4">Contributors</h2>
         <div className="grid grid-cols-5 gap-4">
@@ -41,11 +45,7 @@ export default async function ProjectDetails({ project, data }) {
               key={contributor.id}
               className="flex flex-col items-center"
             >
-              <NextImage
-                className={"w-12 h-12 rounded-full"}
-                src={contributor?.avatar_url}
-                alt={contributor?.login}
-              />
+              <Avatar src={contributor?.avatar_url} alt={contributor?.login} />
             </a>
           ))}
         </div>

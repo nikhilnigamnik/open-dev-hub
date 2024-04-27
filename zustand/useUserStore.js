@@ -4,7 +4,6 @@ import { createJSONStorage, persist } from "zustand/middleware";
 const useUserStore = create(
   persist(
     (set) => ({
-      isUserActive: () => !!user,
       user: null,
       setUser: (user) =>
         set({

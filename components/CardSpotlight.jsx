@@ -30,7 +30,7 @@ export const CardSpotlight = ({
   return (
     <div
       className={cn(
-        "rounded-xl relative p-4 flex flex-col gap-4 shadow-lg  border border-border bg-secondary bg-cover overflow-hidden group",
+        "rounded-xl relative flex flex-col gap-4 shadow-lg  border border-border bg-secondary bg-cover overflow-hidden group",
         className
       )}
       {...props}

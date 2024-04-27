@@ -12,13 +12,14 @@ import Login from "./modals/login";
 
 const BottomNav = () => {
   const pathname = usePathname();
-  const { isUserActive } = useUserStore();
+  const { user } = useUserStore();
+  console.log(user);
   const { openProject } = useProjectModal();
   const { openLogin } = useLoginModal();
 
   return (
-    <div className="fixed z-50  left-2 right-2    rounded-full bottom-4  border border-blue-100/20 bg-blue-200/10  text-blue-200 outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10   hover:text-yellow-300 after:hover:bg-opacity-15 max-w-5xl mx-auto">
-      <div className="grid grid-cols-5 justify-between ">
+    <div className="fixed z-50  left-4 right-4  rounded-full bottom-4  border-border border outline-none backdrop-blur-md  transition-colors after:absolute after:inset-0 after:-z-10  max-w-5xl mx-auto">
+      <div className="grid grid-cols-5 justify-between items-center">
         <Link
           href={"/"}
           className="inline-flex flex-col items-center justify-center px-5 py-3 rounded-s-full  hover:border-yellow-200/40 group"
@@ -45,9 +46,9 @@ const BottomNav = () => {
           <span className="sr-only">Developers</span>
         </Link>
 
-        <Link
-          href={`/new-project`}
-          className="flex items-center justify-center"
+        <div
+          onClick={openProject}
+          className="flex items-center justify-center cursor-pointer"
         >
           <CirclePlus
             className={`w-5 h-5 mb-1 ${
@@ -55,7 +56,7 @@ const BottomNav = () => {
             }`}
           />
           <span className="sr-only">New item</span>
-        </Link>
+        </div>
 
         <Link
           href={"/blog"}
@@ -70,7 +71,7 @@ const BottomNav = () => {
           <span className="sr-only">Blog</span>
         </Link>
 
-        {isUserActive ? (
+        {user?.status === "authenticated" ? (
           <div
             onClick={openProject}
             className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group cursor-pointer"

@@ -1,14 +1,10 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import Container from "../ui/Container";
-import { CardSpotlight } from "../CardSpotlight";
-import NextImage from "../NextImage";
-
 const Hero = () => {
   return (
     <>
-      <div className="flex animate_in justify-center gap-4 items-center flex-col md:h-[60vh] h-[50vh] max-w-5xl m-auto px-4">
+      <div className="flex animate_in justify-center gap-4 items-center flex-col md:h-[55vh] h-[50vh] max-w-5xl m-auto px-4">
         <span className="relative group inline-block w-fit mx-auto overflow-hidden rounded-full p-[1px]">
           <span className="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#71717a_0%,#27272a_50%,#71717a_100%)] animate-spin duration-700 rounded-full group-hover:animate-none"></span>
           <div className="flex gap-1 h-full group w-full items-center justify-center rounded-full bg-zinc-900 px-3 py-1 text-xs text-zinc-200 backdrop-blur-3xl hover:backdrop-blur-2xl hover:shadow-lg transition-all duration-200 ease-in-out">
@@ -34,27 +30,16 @@ const Hero = () => {
           </div>
         </span>
         <h1 className="text-4xl  sm:text-6xl font-bold text-center   bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-          Navigate the World of Open-Source Project
+          Spotlight on Open-Source Innovations
         </h1>
         <p className=" text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-          Your guide to the internet’s most acclaimed open-source projects.
+          Navigate through the highest-rated open-source projects, as chosen by
+          the tech community.
         </p>
-
         <Button>
           <Link href={"/"}>Explore Projects</Link>
         </Button>
       </div>
-      <Container className={"animate_in max-w-5xl mx-auto p-4"}>
-        <CardSpotlight hoverEffect>
-          <NextImage
-            className={"rounded-lg"}
-            src={
-              "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081372/Screenshot-2024-04-02-215837_ra7gfx.avif"
-            }
-            alt={"Banner"}
-          />
-        </CardSpotlight>
-      </Container>
     </>
   );
 };
