@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function ({ params }) {
+  
   const project = await getProjects({ slug: params.projectId });
 
   if (!project) {
