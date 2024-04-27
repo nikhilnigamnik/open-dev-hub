@@ -8,11 +8,11 @@ import Avatar from "../Avatar";
 export default async function ProjectDetails({ project, data }) {
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">
-      <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center">
+      <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center border border-border">
         <NextImage className={"w-28 h-28 rounded-full"} src={project?.logo} />
-        <div className="flex-1 space-y-2">
+        <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 justify-between">
               <h1 className="text-2xl font-bold capitalize">{project?.name}</h1>
               {project?.verified && <BadgeCheck color="#6b7280" size={20} />}
             </div>
@@ -35,8 +35,8 @@ export default async function ProjectDetails({ project, data }) {
 
       <Separator />
 
-      <div>
-        <h2 className="text-lg font-medium mb-4">Contributors</h2>
+      <>
+        <h2 className="text-lg font-medium">Contributors</h2>
         <div className="grid grid-cols-5 gap-4">
           {data?.map((contributor) => (
             <a
@@ -49,7 +49,7 @@ export default async function ProjectDetails({ project, data }) {
             </a>
           ))}
         </div>
-      </div>
+      </>
     </div>
   );
 }

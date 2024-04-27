@@ -4,10 +4,9 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <>
-      <div className="flex animate_in justify-center gap-4 items-center flex-col md:h-[55vh] h-[50vh] max-w-5xl m-auto px-4">
+      <div className="flex animate_in justify-center gap-4 items-center flex-col py-10 max-w-5xl m-auto px-4">
         <span className="relative group inline-block w-fit mx-auto overflow-hidden rounded-full p-[1px]">
-          <span className="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#71717a_0%,#27272a_50%,#71717a_100%)] animate-spin duration-700 rounded-full group-hover:animate-none"></span>
-          <div className="flex gap-1 h-full group w-full items-center justify-center rounded-full bg-zinc-900 px-3 py-1 text-xs text-zinc-200 backdrop-blur-3xl hover:backdrop-blur-2xl hover:shadow-lg transition-all duration-200 ease-in-out">
+          <div className="flex gap-1 h-full group w-full items-center justify-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-zinc-200 backdrop-blur-3xl hover:backdrop-blur-5xl transition-all duration-200 ease-in-out">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
