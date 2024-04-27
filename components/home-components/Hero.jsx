@@ -34,10 +34,10 @@ const Hero = () => {
           </div>
         </span>
         <h1 className="text-4xl  sm:text-6xl font-bold text-center   bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-          "Unleash your potential, contribute to open source."
+          Navigate the World of Open-Source Project
         </h1>
         <p className=" text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-          OpenDevHub is a community of developers, designers, and creators
+          Your guide to the internet’s most acclaimed open-source projects.
         </p>
 
         <Button>
@@ -47,7 +47,7 @@ const Hero = () => {
       <Container className={"animate_in max-w-5xl mx-auto p-4"}>
         <CardSpotlight hoverEffect>
           <NextImage
-          className={"rounded-lg"}
+            className={"rounded-lg"}
             src={
               "https://res.cloudinary.com/dtmp7op6k/image/upload/v1712081372/Screenshot-2024-04-02-215837_ra7gfx.avif"
             }

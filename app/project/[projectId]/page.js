@@ -2,6 +2,7 @@ import ProjectDetails from "@/components/layout/project-details";
 import { getDetailsRepo } from "@/lib/github";
 
 import prisma from "@/lib/prisma";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function ({ params }) {
@@ -10,6 +11,10 @@ export default async function ({ params }) {
       slug: params.projectId,
     },
   });
+
+  if (!project) {
+    notFound();
+  }
 
   const url = new URL(project?.repo);
   const pathSegments = url.pathname.split("/").filter((segment) => segment);
