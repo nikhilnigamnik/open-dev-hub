@@ -9,7 +9,12 @@ export default async function ProjectDetails({ project, data }) {
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">
       <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center border border-border">
-        <NextImage className={"w-28 h-28 rounded-full"} src={project?.logo} />
+        <NextImage
+          width={100}
+          height={100}
+          className={"rounded-full"}
+          src={project?.logo}
+        />
         <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 justify-between">
@@ -28,9 +33,11 @@ export default async function ProjectDetails({ project, data }) {
         <a href={project?.repo} target="_blank">
           <LinkButton>Github</LinkButton>
         </a>
-        <a href={project?.link} target="_blank">
-          <LinkButton>Website</LinkButton>
-        </a>
+        {project?.link && (
+          <a href={project?.link} target="_blank">
+            <LinkButton>Website</LinkButton>
+          </a>
+        )}
       </div>
 
       <Separator />

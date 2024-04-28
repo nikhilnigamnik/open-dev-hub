@@ -46,17 +46,23 @@ const BottomNav = () => {
           <span className="sr-only">Developers</span>
         </Link>
 
-        <div
-          onClick={openProject}
-          className="flex items-center justify-center cursor-pointer"
-        >
-          <CirclePlus
-            className={`w-5 h-5 mb-1 ${
-              pathname === "/new-project" ? "text-yellow-300" : "text-gray-500"
-            }`}
-          />
-          <span className="sr-only">New item</span>
-        </div>
+        {user?.status === "authenticated" ? (
+          <div
+            onClick={openProject}
+            className="flex items-center justify-center cursor-pointer"
+          >
+            <CirclePlus className={`w-5 h-5 mb-1 text-gray-500`} />
+            <span className="sr-only">New item</span>
+          </div>
+        ) : (
+          <div
+            onClick={openLogin}
+            className="flex items-center justify-center cursor-pointer"
+          >
+            <CirclePlus className={`w-5 h-5 mb-1 text-gray-500`} />
+            <span className="sr-only">New item</span>
+          </div>
+        )}
 
         <Link
           href={"/blog"}
@@ -76,11 +82,7 @@ const BottomNav = () => {
             onClick={openProject}
             className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group cursor-pointer"
           >
-            <User
-              className={`w-5 h-5 mb-1 ${
-                pathname === `/profile` ? "text-yellow-300" : "text-gray-500"
-              }`}
-            />
+            <User className={`w-5 h-5 mb-1 text-gray-500`} />
 
             <span className="sr-only">Profile</span>
           </div>
@@ -89,11 +91,7 @@ const BottomNav = () => {
             onClick={openLogin}
             className="inline-flex flex-col items-center justify-center px-5 rounded-e-full  group cursor-pointer"
           >
-            <User
-              className={`w-5 h-5 mb-1 ${
-                pathname === `/profile` ? "text-yellow-300" : "text-gray-500"
-              }`}
-            />
+            <User className={`w-5 h-5 mb-1 text-gray-500`} />
 
             <span className="sr-only">Profile</span>
           </div>
