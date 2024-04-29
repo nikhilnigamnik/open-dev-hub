@@ -14,7 +14,7 @@ const initialState = {
   error: null,
 };
 
-export default function AddProject() {
+const AddProject = React.memo(() => {
   const { openProject, closeProject, isProject } = useProjectModal();
 
   const [state, formAction] = useFormState(submitProject, initialState);
@@ -41,7 +41,7 @@ export default function AddProject() {
             className="flex flex-col space-y-4 text-white px-4 py-8 md:px-16 justify-center items-center"
           >
             <label htmlFor="github">
-              <span className="text-sm font-medium ">GitHub Repository</span>
+              <span className="text-sm font-medium ">Github Repo URL</span>
               <div className="relative mt-1">
                 <Input
                   name="github"
@@ -62,7 +62,9 @@ export default function AddProject() {
       </DrawerContent>
     </Drawer>
   );
-}
+});
+
+export default AddProject;
 
 const FormButton = () => {
   const { pending } = useFormStatus();

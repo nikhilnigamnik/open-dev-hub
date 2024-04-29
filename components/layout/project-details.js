@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { BadgeCheck, Star } from "lucide-react";
+import { BadgeCheck, Github, Globe, Star } from "lucide-react";
 import NextImage from "../NextImage";
 import { LinkButton } from "../ui/link-button";
 import { Badge } from "../ui/badge";
@@ -31,11 +31,17 @@ export default async function ProjectDetails({ project, data }) {
       </div>
       <div className="flex gap-2">
         <a href={project?.repo} target="_blank">
-          <LinkButton>Github</LinkButton>
+          <LinkButton className={"flex items-center gap-3"}>
+            <Github />
+            Github
+          </LinkButton>
         </a>
         {project?.link && (
           <a href={project?.link} target="_blank">
-            <LinkButton>Website</LinkButton>
+            <LinkButton className={"flex items-center gap-3"}>
+              <Globe />
+              Website
+            </LinkButton>
           </a>
         )}
       </div>

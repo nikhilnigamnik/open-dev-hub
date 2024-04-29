@@ -13,7 +13,7 @@ const page = () => {
         >
           <div className="px-6 py-5">
             <div className="flex items-center justify-between mb-4">
-              <div className="inline-block rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-gray-400">
+              <div className="text-xs font-medium text-gray-400">
                 {blog?.author}
               </div>
               <p className="text-sm text-gray-400">{blog?.publishDate}</p>

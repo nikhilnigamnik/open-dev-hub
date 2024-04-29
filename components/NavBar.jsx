@@ -1,8 +1,3 @@
-import React from "react";
-import { Button } from "./ui/button";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
-
 import Link from "next/link";
 import { GitIcon, TwitterIcon } from "./Icon/Icon";
 
@@ -13,7 +8,6 @@ const NavBar = () => {
         <h1 className="text-xl  font-bold relative  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
           <Link href={"/"}>OpenDevHub</Link>
         </h1>
-
         <div className="flex items-center gap-4">
           <Link href={"https://twitter.com/nikhil_nigamnik"}>
             <TwitterIcon />

@@ -9,7 +9,7 @@ export default async function ProjectCard({ data }) {
     <div className="flex animate_in  flex-col gap-4">
       {data.map((el) => (
         <CardSpotlight className={"p-4"} key={el?.id} hoverEffect>
-          <div className="flex flex-col gap-2" href={`/project/${el?.slug}`}>
+          <Link className="flex flex-col gap-2" href={`/project/${el?.slug}`}>
             <div className="flex items-center gap-4 justify-between">
               <div className="flex items-center gap-4 ">
                 <NextImage
@@ -19,28 +19,22 @@ export default async function ProjectCard({ data }) {
                   width={30}
                   className="rounded-full"
                 />
-                <Link href={`/project/${el?.slug}`}>
-                  <p className="text-gray-300 font-semibold  text-lg capitalize">
-                    {el?.name}
-                  </p>
-                </Link>
-                {el?.verified && <BadgeCheck color="#6b7280" size={20}  />}
+
+                <p className="text-gray-300 font-semibold  text-lg capitalize">
+                  {el?.name}
+                </p>
+
+                {el?.verified && <BadgeCheck color="#6b7280" size={20} />}
               </div>
-              <Badge>
-                <a
-                  className="flex items-center gap-2"
-                  href={el?.repo}
-                  target="_blank"
-                >
-                  <Star className="h-4 w-4 text-gray-200" />
-                  <p>{el?.stars.toLocaleString()}</p>
-                </a>
+              <Badge className="flex items-center gap-2">
+                <Star className="h-4 w-4 text-gray-200" />
+                <p>{el?.stars.toLocaleString()}</p>
               </Badge>
             </div>
 
             <p className="text-lg font-bold text-gradient">{el?.title}</p>
             <p className="text-gray-200">{el?.description}</p>
-          </div>
+          </Link>
         </CardSpotlight>
       ))}
 

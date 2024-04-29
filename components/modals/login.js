@@ -7,10 +7,12 @@ import { Button } from "../ui/button";
 import { signIn, useSession } from "next-auth/react";
 import useUserStore from "@/zustand/useUserStore";
 
-export default function Login() {
+const Login = React.memo(() => {
   const { openLogin, closeLogin, isLogin } = useLoginModal();
   const { setUser } = useUserStore();
   const session = useSession();
+
+  console.log("login rendered");
 
   React.useEffect(() => {
     setUser(session);
@@ -25,7 +27,9 @@ export default function Login() {
     >
       <DrawerContent>
         <div className="flex flex-col space-y-4 text-white px-4 py-8 md:px-16 text-center">
-          <span className="text-sm font-medium ">Login </span>
+          <span className="text-sm font-medium ">
+            Login to add your project
+          </span>
           <div className="mt-2 flex flex-col justify-center items-center gap-3">
             <Button onClick={() => signIn("google")}>Google</Button>
             <Button onClick={() => signIn("github")}>GitHub</Button>
@@ -34,4 +38,6 @@ export default function Login() {
       </DrawerContent>
     </Drawer>
   );
-}
+});
+
+export default Login;
