@@ -5,10 +5,7 @@ import { LinkButton } from "../ui/link-button";
 import { Badge } from "../ui/badge";
 import Avatar from "../Avatar";
 
-export default async function ProjectDetails({ project, data, user }) {
-  
-const isOwner = project?.userId === user?.id;
-
+export default async function ProjectDetails({ project, data }) {
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">
       <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center border border-border">
@@ -49,13 +46,6 @@ const isOwner = project?.userId === user?.id;
             </a>
           )}
         </div>
-        {/* <div>
-          {isOwner && (
-            <LinkButton href={`/project/${project?.slug}/edit`}>
-              Edit Project
-            </LinkButton>
-          )}
-        </div> */}
       </div>
 
       <Separator />
