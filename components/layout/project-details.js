@@ -6,7 +6,8 @@ import { Badge } from "../ui/badge";
 import Avatar from "../Avatar";
 
 export default async function ProjectDetails({ project, data, user }) {
-  const isOwner = project?.userId === user?.id;
+  
+const isOwner = project?.userId === user?.id;
 
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">

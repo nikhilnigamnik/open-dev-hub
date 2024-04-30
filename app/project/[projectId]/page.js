@@ -6,10 +6,10 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function ({ params }) {
+
   const project = await getProjects({ slug: params.projectId });
 
  
-
   if (!project) {
     notFound();
   }
@@ -17,7 +17,9 @@ export default async function ({ params }) {
   const { user } = await getUser();
 
   const url = new URL(project?.repo);
+
   const pathSegments = url.pathname.split("/").filter((segment) => segment);
+  
   const result = pathSegments.join("/");
 
   const data = await getDetailsRepo(result);

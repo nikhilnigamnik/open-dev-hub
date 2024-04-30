@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default async function loading() {
+export default async function Loader() {
   return (
     <section className="max-w-5xl mx-auto p-4 flex flex-col gap-4">
       <Skeleton className="w-full h-40 rounded-xl" />
