@@ -1,20 +1,20 @@
 import ProjectDetails from "@/components/layout/project-details";
+import { getUser } from "@/lib/auth";
 import { getDetailsRepo } from "@/lib/github";
 import { getProjects } from "@/lib/project";
-import { notFound, useSearchParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import React from "react";
-
-export async function generateMeta() {
-  const searchParams = useSearchParams();
-  console.log(searchParams);
-}
 
 export default async function ({ params }) {
   const project = await getProjects({ slug: params.projectId });
 
+ 
+
   if (!project) {
     notFound();
   }
+
+  const { user } = await getUser();
 
   const url = new URL(project?.repo);
   const pathSegments = url.pathname.split("/").filter((segment) => segment);
@@ -24,7 +24,7 @@ export default async function ({ params }) {
 
   return (
     <div className="max-w-5xl mx-auto p-4 text-gray-200">
-      <ProjectDetails project={project} data={data} />
+      <ProjectDetails project={project} data={data} user={user} />
     </div>
   );
 }

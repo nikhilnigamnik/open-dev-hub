@@ -5,7 +5,9 @@ import { LinkButton } from "../ui/link-button";
 import { Badge } from "../ui/badge";
 import Avatar from "../Avatar";
 
-export default async function ProjectDetails({ project, data }) {
+export default async function ProjectDetails({ project, data, user }) {
+  const isOwner = project?.userId === user?.id;
+
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto p-4 sm:p-6 md:p-8">
       <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-secondary  justify-center sm:items-start items-center border border-border">
@@ -29,21 +31,30 @@ export default async function ProjectDetails({ project, data }) {
           <p className="text-gray-400 text-sm">{project?.description}</p>
         </div>
       </div>
-      <div className="flex gap-2">
-        <a href={project?.repo} target="_blank">
-          <LinkButton className={"flex items-center gap-3"}>
-            <Github />
-            Github
-          </LinkButton>
-        </a>
-        {project?.link && (
-          <a href={project?.link} target="_blank">
+      <div className="flex justify-between items-center">
+        <div className="flex gap-2">
+          <a href={project?.repo} target="_blank">
             <LinkButton className={"flex items-center gap-3"}>
-              <Globe />
-              Website
+              <Github />
+              Github
             </LinkButton>
           </a>
-        )}
+          {project?.link && (
+            <a href={project?.link} target="_blank">
+              <LinkButton className={"flex items-center gap-3"}>
+                <Globe />
+                Website
+              </LinkButton>
+            </a>
+          )}
+        </div>
+        {/* <div>
+          {isOwner && (
+            <LinkButton href={`/project/${project?.slug}/edit`}>
+              Edit Project
+            </LinkButton>
+          )}
+        </div> */}
       </div>
 
       <Separator />
