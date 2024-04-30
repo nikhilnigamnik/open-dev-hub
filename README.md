@@ -1,23 +1,14 @@
 
 # OpneDevHub
 
-OpenDevHub is a community of developers, designers, and creators
+Spotlight on Open-Source Innovations /
+Navigate through the highest-rated open-source projects, as chosen by the tech community.
 
 
-## Screenshots
+![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1714495290/Screenshot_2024-04-30_220928_ao7tz8.png)
 
-## Landing
 
-![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1710742127/Screenshot_2024-03-18_113553_hxqjwu.png)
-
-## Dashboard
-
-![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648044/Screenshot_2024-03-28_231620_kabvbb.png)
-
-## Profile
-
-![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1711648277/Screenshot_2024-03-28_232017_fp16nn.png)
-
+![App Screenshot](https://res.cloudinary.com/dtmp7op6k/image/upload/v1714495274/Screenshot_2024-04-30_220955_dog9he.png)
 
 
 ## Connect with us
@@ -36,7 +27,7 @@ As a community, we always encourage people to share their thoughts and ideas. Do
 
 ![Prisma](https://img.shields.io/badge/Prisma-f3f6f4?style=for-the-badge&logo=prisma&logoColor=black)
 
-**Client** : NextJs, TailwindCss, Redux Toolkit
+**Client** : NextJs, TailwindCss
 
 **Server** : NextJs API, MongoDB, Prisma ORM, Next-Auth
 
