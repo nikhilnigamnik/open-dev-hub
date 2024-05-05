@@ -14,7 +14,6 @@ const BottomNav = memo(() => {
   const { openLoginModal, openAddProjectModal } = useModal();
   const isAuthenticated = useIsUserAuthenticated();
 
-
   const handleOpenModal = () => {
     isAuthenticated ? openAddProjectModal() : openLoginModal();
   };
