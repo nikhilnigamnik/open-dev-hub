@@ -33,6 +33,7 @@
     "clsx": "^2.1.0",
     "input-otp": "^1.1.0",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.363.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
