@@ -12,15 +12,17 @@ const page = () => {
           className="rounded-xl border border-border bg-secondary"
         >
           <div className="px-6 py-5">
-            <div className="flex items-center justify-between mb-4">
-              <div className="text-xs font-medium text-gray-400">
-                {blog?.author}
-              </div>
+            <div className="flex justify-between items-center gap-2 mb-2">
+              <Link
+                className="md:text-2xl text-xl font-bold text-gray-300"
+                href={`/blog/${blog?.link}`}
+              >
+                {blog?.title}
+              </Link>
+
               <p className="text-sm text-gray-400">{blog?.publishDate}</p>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-gray-300">
-              <Link href={`/blog/${blog?.link}`}>{blog?.title}</Link>
-            </h3>
+
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
               {blog?.content?.slice(0, 400)}...
             </p>

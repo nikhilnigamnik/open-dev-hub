@@ -1,6 +1,4 @@
 import { getProjects } from "@/lib/project";
-import { Suspense } from "react";
-import Loader from "../loading";
 
 export async function generateMetadata({ params }) {
   const project = await getProjects({ slug: params.projectId });
@@ -19,5 +17,5 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function layout({ children }) {
-  return <Suspense fallback={<Loader />}>{children}</Suspense>;
+  return children;
 }
