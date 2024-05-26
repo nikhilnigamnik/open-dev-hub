@@ -108,7 +108,7 @@ export default function ProjectCard({ data, language }) {
       </div>
       <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
         <DrawerContent>
-          <div className="text-center max-w-lg mx-auto flex flex-col gap-4 mt-4">
+          <div className="text-center max-w-lg mx-auto flex flex-col gap-4 mt-4 px-4">
             <p className="text-white">Filter by Language</p>
             <div className="flex flex-wrap gap-2 justify-center items-center">
               {language.map((el, idx) => (

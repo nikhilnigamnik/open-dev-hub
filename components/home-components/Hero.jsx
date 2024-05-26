@@ -1,7 +1,19 @@
+"use client";
+
 import React from "react";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { useModal } from "@/providers/modal-provider";
+import { useIsUserAuthenticated } from "@/lib/session";
+import Login from "../modals/login-modal";
+import AddProject from "../modals/add-project";
+
 const Hero = () => {
+  const { openLoginModal, openAddProjectModal } = useModal();
+  const isAuthenticated = useIsUserAuthenticated();
+
+  const handleOpenModal = () => {
+    isAuthenticated ? openAddProjectModal() : openLoginModal();
+  };
   return (
     <>
       <div className="flex animate_in justify-center gap-4 items-center flex-col py-10 max-w-5xl m-auto px-4">
@@ -35,10 +47,9 @@ const Hero = () => {
           Navigate through the highest-rated open-source projects, as chosen by
           the tech community.
         </p>
-        <Button>
-          <Link href={"/"}>Explore Projects</Link>
-        </Button>
+        <Button onClick={handleOpenModal}>Submit</Button>
       </div>
+      {isAuthenticated ? <AddProject /> : <Login />}
     </>
   );
 };
