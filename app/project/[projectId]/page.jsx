@@ -1,11 +1,38 @@
 import ProjectDetails from "@/components/layout/project-details";
 import { getDetailsRepo } from "@/lib/github";
-import { getProjects } from "@/lib/project";
+import { getProject } from "@/lib/project";
 import { notFound } from "next/navigation";
 import React from "react";
 
+const projectData = await getProject();
+
+export async function generateStaticParams() {
+  return projectData.map((project) => ({
+    params: {
+      projectId: project.slug,
+    },
+  }));
+}
+
+export async function generateMetadata({ params }) {
+  const project = projectData.find(
+    (project) => project.slug === params.projectId
+  );
+  if (!project) {
+    notFound();
+  }
+
+  return {
+    title: `${project.name} - Open Source Projects`,
+    description: project.description,
+    image: project.image,
+  };
+}
+
 export default async function ({ params }) {
-  const project = await getProjects({ slug: params.projectId });
+  const project = projectData.find(
+    (project) => project.slug === params.projectId
+  );
 
   if (!project) {
     notFound();
