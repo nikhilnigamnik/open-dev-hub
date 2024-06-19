@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GitIcon, TwitterIcon } from "./Icon/Icon";
+import { GitIcon } from "./Icon/Icon";
 
 const NavBar = () => {
   return (
@@ -9,9 +9,6 @@ const NavBar = () => {
           <Link href={"/"}>OpenDevHub</Link>
         </h1>
         <div className="flex items-center gap-4">
-          <Link href={"https://twitter.com/nikhil_nigamnik"}>
-            <TwitterIcon />
-          </Link>
           <Link href={"https://github.com/nikhilnigamnik/open-dev-hub"}>
             <GitIcon />
           </Link>
