@@ -6,14 +6,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "@/components/ui/sonner";
 import GlobalProvider from "@/providers/GlobalProvider";
 import Script from "next/script";
+import { baseURL } from "@/lib/constants";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://www.opendevhub.xyz/"),
-  title: "OpenDevHub",
+  title: {
+    default: "OpenDevHub - Open Source Projects",
+    template: "%s | OpenDevHub - Open Source Projects",
+  },
   description:
-    "OpenDevHub is a community of open source developers, designers, and contributors. We provide a platform for open source projects, ideas, and lists.",
+    "OpenDevHub is a platform for open source projects, where you can find open source projects, contribute to them, and get ideas for your next open source project.",
+  metadataBase: new URL(baseURL),
   keywords: [
     "OpenDevHub",
     "Open Source",
@@ -27,22 +31,32 @@ export const metadata = {
   ],
 
   openGraph: {
-    type: "website",
-    url: "https://www.opendevhub.xyz/",
-    title: "OpenDevHub",
+    title: "OpenDevHub - Open Source Projects",
     description:
-      "OpenDevHub is a community of open source developers, designers, and contributors. We provide a platform for open source projects, ideas, and lists.",
-    images: [
-      {
-        url: "https://www.opendevhub.xyz/banenr.png",
-        width: 1200,
-        height: 630,
-        alt: "OpenDevHub",
-      },
-    ],
+      "OpenDevHub is a platform for open source projects, where you can find open source projects, contribute to them, and get ideas for your next open source project.",
+    type: "website",
+    url: baseURL,
+    siteName: "OpenDevHub",
+    locale: "en_US",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": "-1",
+      "max-image-preview": "large",
+      "max-snippet": "-1",
+    },
+  },
+  twitter: {
+    title: "OpenDevHub - Open Source Projects",
+    card: "summary_large_image",
   },
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
