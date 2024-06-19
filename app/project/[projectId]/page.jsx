@@ -22,10 +22,38 @@ export async function generateMetadata({ params }) {
     notFound();
   }
 
+  console.log(project);
+
   return {
+    metadataBase: new URL("https://www.opendevhub.xyz/"),
     title: `${project.name} - Open Source Projects`,
     description: project.description,
-    image: project.image,
+    keywords: [
+      "OpenDevHub",
+      "Open Source",
+      "Open Source Projects",
+      "Open Source Community",
+      "Open Source Software",
+      "Open Source Development",
+      "Open Source Contributions",
+      "Open Source Project Ideas",
+      "Open Source Project Lists",
+    ],
+
+    openGraph: {
+      type: "website",
+      url: "https://www.opendevhub.xyz/",
+      title: `${project.name} - Open Source Projects`,
+      description: `${project.description}`,
+      images: [
+        {
+          url: `${project?.logo}`,
+          width: 1200,
+          height: 630,
+          alt: "OpenDevHub",
+        },
+      ],
+    },
   };
 }
 
