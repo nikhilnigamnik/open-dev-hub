@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "relative inline-flex h-fit w-fit rounded-full border border-blue-100/20 bg-blue-200/10 px-4 py-2 text-slate-200 outline-none focus:ring-4 focus:ring-gray-500",
+  "relative inline-flex h-fit w-fit rounded-xl border border-blue-100/20 bg-blue-200/10 px-4 py-2 text-slate-200 outline-none focus:ring-4 focus:ring-gray-500",
   {
     variants: {
       variant: {

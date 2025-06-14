@@ -1,95 +1,110 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { Cross2Icon } from "@radix-ui/react-icons"
+import * as React from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const Dialog = DialogPrimitive.Root
+function Dialog({ ...props }) {
+  return <DialogPrimitive.Root data-slot="dialog" {...props} />;
+}
 
-const DialogTrigger = DialogPrimitive.Trigger
+function DialogTrigger({ ...props }) {
+  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
+}
 
-const DialogPortal = DialogPrimitive.Portal
+function DialogPortal({ ...props }) {
+  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
+}
 
-const DialogClose = DialogPrimitive.Close
+function DialogClose({ ...props }) {
+  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
+}
 
-const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={cn(
-      "fixed inset-0 z-50 backdrop-blur-xl  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
-    {...props} />
-))
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
-
-const DialogContent = React.forwardRef(({ className, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
+function DialogOverlay({ className, ...props }) {
+  return (
+    <DialogPrimitive.Overlay
+      data-slot="dialog-overlay"
       className={cn(
-        "fixed rounded-xl left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 bg-secondary border-border border p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] ",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-md",
         className
       )}
-      {...props}>
-      {children}
-      <DialogPrimitive.Close
-        className="absolute right-4 top-4 rounded-md text-white  border border-border transition-opacity   data-[state=open]:bg-slate-100 data-[state=open]:text-slate-500 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-400">
-        <Cross2Icon className="h-5 w-5" />
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
-  </DialogPortal>
-))
-DialogContent.displayName = DialogPrimitive.Content.displayName
+      {...props}
+    />
+  );
+}
 
-const DialogHeader = ({
-  className,
-  ...props
-}) => (
-  <div
-    className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)}
-    {...props} />
-)
-DialogHeader.displayName = "DialogHeader"
+function DialogContent({ className, children, ...props }) {
+  return (
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        onOpenAutoFocus={(e) => e.preventDefault()}
+        data-slot="dialog-content"
+        className={cn(
+          "bg-background rounded-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-1/2 left-1/2 z-50 grid max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto  border p-6 shadow-xs duration-200 sm:max-w-xl",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  );
+}
 
-const DialogFooter = ({
-  className,
-  ...props
-}) => (
-  <div
-    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
-    {...props} />
-)
-DialogFooter.displayName = "DialogFooter"
+function DialogHeader({ className, ...props }) {
+  return (
+    <div
+      data-slot="alert-dialog-header"
+      className={cn("flex flex-col gap-1 text-left", className)}
+      {...props}
+    />
+  );
+}
 
-const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={cn("text-lg text-gradient font-semibold leading-none tracking-tight", className)}
-    {...props} />
-))
-DialogTitle.displayName = DialogPrimitive.Title.displayName
+function DialogFooter({ className, ...props }) {
+  return (
+    <div
+      data-slot="alert-dialog-footer"
+      className={cn(
+        "flex flex-col-reverse gap-3 sm:flex-row sm:justify-end",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
-const DialogDescription = React.forwardRef(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
-    ref={ref}
-    className={cn("text-sm text-slate-500 dark:text-slate-400", className)}
-    {...props} />
-))
-DialogDescription.displayName = DialogPrimitive.Description.displayName
+function DialogTitle({ className, ...props }) {
+  return (
+    <DialogPrimitive.Title
+      data-slot="alert-dialog-title"
+      className={cn("text-lg leading-none font-semibold", className)}
+      {...props}
+    />
+  );
+}
+
+function DialogDescription({ className, ...props }) {
+  return (
+    <DialogPrimitive.Description
+      data-slot="alert-dialog-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  );
+}
 
 export {
   Dialog,
-  DialogPortal,
-  DialogOverlay,
-  DialogTrigger,
   DialogClose,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
-}
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+};
