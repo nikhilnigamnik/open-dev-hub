@@ -47,7 +47,7 @@ export default function ProjectCard({ data, language }) {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex justify-between items-center gap-3">
-        <div className="relative flex gap-4 hover:ring-1 hover:ring-gray-500 rounded-full border border-blue-100/20 bg-blue-200/10 px-4 py-2 text-blue-200 outline-none focus:ring-4 focus:ring-gray-500 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full md:w-fit  w-full">
+        <div className="relative flex items-center gap-4 hover:ring-1 hover:ring-gray-500 rounded-xl border border-blue-100/20 bg-blue-200/10 px-4 h-10  text-blue-200 outline-none focus:ring-4 focus:ring-gray-500 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-xl w-fit">
           <Search color="#6b7280" />
           <input
             type="text"

@@ -18,7 +18,6 @@ const Login = () => {
   const handleSignIn = useCallback(
     async (provider) => {
       const result = await signIn(provider);
-      console.log(result);
       if (result?.ok) {
         closeLoginModal();
       }

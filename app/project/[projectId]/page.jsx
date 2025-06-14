@@ -22,8 +22,6 @@ export async function generateMetadata({ params }) {
     notFound();
   }
 
-  console.log(project);
-
   return {
     metadataBase: new URL("https://www.opendevhub.xyz/"),
     title: `${project.name} - Open Source Projects`,
